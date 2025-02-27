@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "0lWM8jmL7VT3S2uShsfAAyz4hDXBu3JagAHY6LimBAQ=",
+  "Source": "sport-app-backend",
+  "BasePath": "_content/sport-app-backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
