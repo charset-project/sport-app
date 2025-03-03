@@ -3,11 +3,12 @@ using sport_app_backend.Models.TrainingPlan;
 
 namespace sport_app_backend.Models.Account;
 
-public class Coachplans
+public class Coachplan
 {
 
-    public int TariffId { get; set; }
-    public int CoachId { get; set; } 
+    public int Id { get; set; }
+    public int CoachId { get; set; }
+    public Coach? Coach {get; set;} 
     
     [MaxLength(50)]
     public required string Title { get; set; }

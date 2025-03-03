@@ -14,8 +14,13 @@ public class Athlete : User
     [Required]
     [Range(1, 300)]
     public int WeightGoal { get; set; }
+    public ICollection<WeightEntry> WeightEntries { get; set; } = [];
+    public WaterInTake? WaterInTake { get; set; }
+    
 
-    public List<String> Injury { get; set; } = [];
+
+
+    public ICollection<String> Injury { get; set; } = [];
     //level & Current Body Form can be added
 
 }
