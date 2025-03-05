@@ -1,10 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using sport_app_backend.Models.Account;
 using sport_app_backend.Models.Payments;
 
 namespace sport_app_backend.Models.Program;
 
 public class WorkoutProgram
-{
+{   [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     public int CoachId { get; set; }
     public Coach? Coach {get; set;}
@@ -19,5 +22,5 @@ public class WorkoutProgram
     public int Duration { get; set; }
     public string Description { get; set; } = "";
     public int NumberOfRepeats { get; set; }    
-    public ICollection<ProgramInDay>? ProgramInDays { get; set; }    
+    public ICollection<WorkoutProgramInDay>? WorkoutProgramInDays { get; set; }    
 }

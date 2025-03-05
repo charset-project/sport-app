@@ -1,9 +1,12 @@
 using sport_app_backend.Models.Actions;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace sport_app_backend.Models.Program;
 
 public class SingelExercise
-{
+{   [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     public int ExerciseInDayId { get; set; }
     public ExerciseInDay? ExerciseInDay { get; set; }

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using sport_app_backend.Models.Account;
 using sport_app_backend.Models.Program;
 using sport_app_backend.Models.TrainingPlan;
@@ -5,8 +7,10 @@ using sport_app_backend.Models.TrainingPlan;
 namespace sport_app_backend.Models.Payments;
 
 public class Payment
-{
+{   [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
+    
     public int AthleteId { get; set; }
     public Athlete? Athlete { get; set; }
     public int CoachId { get; set; }

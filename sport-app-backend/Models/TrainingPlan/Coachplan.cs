@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using sport_app_backend.Models.TrainingPlan;
 
 namespace sport_app_backend.Models.Account;
 
 public class Coachplan
 {
-
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     public int CoachId { get; set; }
     public Coach? Coach {get; set;} 
@@ -15,7 +17,7 @@ public class Coachplan
   
     [MaxLength(500)]
     public required string Description { get; set; }
-    public required int Price { get; set; }
+    public required double Price { get; set; }
     public required int DurationByDay { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedDate { get; set; }
