@@ -104,3 +104,12 @@ I:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\ru\Microsof
 I:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 I:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 I:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+i:\403-1\es-402\sport-app-backend\sport-app-backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

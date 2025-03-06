@@ -1,12 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
+using sport_app_backend.Models.Payments;
+using sport_app_backend.Models.Program;
 
 namespace sport_app_backend.Models.Account;
 
-public class Coach 
+public class Coach :IdentityUser<int>
 {   [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id {get; set;}
+    public override int Id {get; set;}
     
     [Required]
     [StringLength(15)]
@@ -15,8 +18,8 @@ public class Coach
     [StringLength(50)]
     public required string LastName { get; set; }
 
-    [Range(1300, 1402)]
-    public int BirthDate { get; set; }
+    [Required]
+    public DateTime BirthDate { get; set; }
   
     [StringLength(11)]
     [Required]
@@ -34,11 +37,14 @@ public class Coach
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}")]
     public DateTime LastLogin { get; set; }
     public Gender Gender { get; set; }
-    public List<CoachingDomain>? Domain { get; set; }
+    public ICollection<CoachingDomain>? Domain { get; set; }
     
     public int StartCoachingYear { get; set; }
     
-    public List<Coachplan>? Coachplans { get; set; }       
+    public ICollection<Coachplan>? Coachplans { get; set; } 
+    public ICollection<Payment>? Payments { get; set; }
+    public ICollection<WorkoutProgram>? WorkoutPrograms { get; set; }
+    
    
 
 

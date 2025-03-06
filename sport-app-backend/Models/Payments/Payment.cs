@@ -9,8 +9,7 @@ namespace sport_app_backend.Models.Payments;
 public class Payment
 {   [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
-    
+    public int Id { get; set; }  
     public int AthleteId { get; set; }
     public Athlete? Athlete { get; set; }
     public int CoachId { get; set; }
@@ -19,13 +18,12 @@ public class Payment
     public required string TitleOfPlan { get; set; }
     public required string DescriptionOfPlan { get; set; }
     public required int DurationByDay { get; set; }
-    public bool IsActive { get; set; }
     public TypeOfCoachingPlan TypeOfCoachingPlan { get; set; } 
 
     public string TransitionId { get; set; }="";
 
-    public PaymentStatus PaymentStatus { get; set; }    
-    public DateTime PaymentDate { get; set; }
+    public PaymentStatus PaymentStatus { get; set; } = PaymentStatus.inprogress;
+    public DateTime PaymentDate { get; set; }=DateTime.Now;
     public WorkoutProgram? WorkoutProgram { get; set; }
 
 

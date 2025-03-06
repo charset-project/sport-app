@@ -10,7 +10,6 @@ public class WaterInTake
     public int Id { get; set; }
     public int AthleteId { get; set; }
     public Athlete? Athlete { get; set; }
-    public DateTime Date { get; set; }
     public int DailyCupOfWater { get; set; } 
-    public int NumberOfReminderInDay { get; set; }
+    public int Reminder { get; set; }
 }

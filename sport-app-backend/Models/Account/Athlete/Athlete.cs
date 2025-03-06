@@ -1,28 +1,29 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using sport_app_backend.Models.Payments;
+using sport_app_backend.Models.Program;
 
 
 namespace sport_app_backend.Models.Account;
 
-public class Athlete 
-{   [Key]
+public class Athlete:IdentityUser<int>
+{
+    [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
-    
+    public override int Id { get; set; }
+
     [Required]
     [StringLength(15)]
     public required string FirstName { get; set; }
     [Required]
     [StringLength(50)]
     public required string LastName { get; set; }
-
-    
-    public int BirthDate { get; set; }
-    
+    [Required]
+    public DateTime BirthDate { get; set; }
     [StringLength(11)]
     [Required]
-    public required string PhoneNumber { get; set; }
+    public override required string PhoneNumber { get; set; }
     [EmailAddress]
     [StringLength(50)]
     public string Email { get; set; } = "";
@@ -53,9 +54,6 @@ public class Athlete
     public LevelOfAthlete LevelOfAthlete { get; set; }
     public BodyForm CurrentBodyForm { get; set; }
     public BodyForm TargetBodyForm { get; set; }
-    
-
-   
-    
-
+    public ICollection<Payment> Payments { get; set; } = [];
+    public ICollection<WorkoutProgram> WorkoutPrograms { get; set; } = [];
 }
