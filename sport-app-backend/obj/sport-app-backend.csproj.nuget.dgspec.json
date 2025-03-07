@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj": {}
+    "E:\\university\\ترم 6\\مو نرم\\Project\\sport-app\\sport-app-backend\\sport-app-backend.csproj": {}
   },
   "projects": {
-    "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj": {
+    "E:\\university\\ترم 6\\مو نرم\\Project\\sport-app\\sport-app-backend\\sport-app-backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj",
+        "projectUniqueName": "E:\\university\\ترم 6\\مو نرم\\Project\\sport-app\\sport-app-backend\\sport-app-backend.csproj",
         "projectName": "sport-app-backend",
-        "projectPath": "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj",
-        "packagesPath": "C:\\Users\\paniz\\.nuget\\packages\\",
-        "outputPath": "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\obj\\",
+        "projectPath": "E:\\university\\ترم 6\\مو نرم\\Project\\sport-app\\sport-app-backend\\sport-app-backend.csproj",
+        "packagesPath": "C:\\Users\\Dour-Andish\\.nuget\\packages\\",
+        "outputPath": "E:\\university\\ترم 6\\مو نرم\\Project\\sport-app\\sport-app-backend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\paniz\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Dour-Andish\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,12 +44,21 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.11, )"
@@ -87,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
