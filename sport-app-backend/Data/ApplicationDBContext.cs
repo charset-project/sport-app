@@ -12,23 +12,22 @@ using sport_app_backend.Models.Program;
 
 namespace sport_app_backend.Data;
 
-public class ApplicationDbContext : IdentityDbContext<IdentityUser>
-{
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
-    { }
+public class ApplicationDbContext : IdentityDbContext<User,Role,int>
+{  public ApplicationDbContext(DbContextOptions dbContextOptions)
+        : base(dbContextOptions)
+    {}
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    // مشخص کردن کلید خارجی
+        protected override void OnModelCreating(ModelBuilder builder){
+            base.OnModelCreating(builder); 
+          
+          builder.Entity<Role>().HasData(
+        new Role { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
+        new Role { Id = 2, Name = "Athlete", NormalizedName = "ATHLETE" },
+        new Role { Id = 3, Name = "Coach", NormalizedName = "COACH"});
 
-    base.OnModelCreating(modelBuilder);
-}
-
-
-    public DbSet<Athlete> Athletes { get; set; }
+    }
     public DbSet<Coach> Coaches { get; set; }
-  
-
+    public DbSet<Athlete> Athletes { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Exercise> Exercises { get; set; }
     public DbSet<WorkoutProgram> WorkoutPrograms { get; set; }

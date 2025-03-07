@@ -5,21 +5,27 @@ using sport_app_backend.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using sport_app_backend.Models.Account;
+using sport_app_backend.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
-var ConnectionStrings = builder.Configuration.GetConnectionString("DefaultConnection");
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var ConnectionStrings = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
  options.UseMySql(ConnectionStrings,
         ServerVersion.AutoDetect(ConnectionStrings)));
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+  builder.Services.AddIdentity<User, Role>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+        
+
+
+
+
 builder.Services.AddAuthentication(options =>
 {
 options.DefaultAuthenticateScheme =
@@ -40,7 +46,7 @@ options.TokenValidationParameters = new TokenValidationParameters
     ValidAudience = builder.Configuration["JWT:Audience"],
     ValidateIssuerSigningKey = true,
     IssuerSigningKey = new SymmetricSecurityKey(
-        System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"])
+        System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:Signinkey"])
     )
 };
 });
@@ -67,6 +73,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapControllers();
 
 
 
