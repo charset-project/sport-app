@@ -9,8 +9,8 @@ namespace sport_app_backend.Models.Account;
 public class Coach 
 {   
     [Key]
-    public  int Id {get; set;}
-    public User User {get; set;}
+    public int Id {get; set;}
+    public User? User {get; set;}
     public int UserId {get; set;}
     [EmailAddress]
     [StringLength(50)]
@@ -22,6 +22,8 @@ public class Coach
     public ICollection<Coachplan>? Coachplans { get; set; } 
     public ICollection<Payment>? Payments { get; set; }
     public ICollection<WorkoutProgram>? WorkoutPrograms { get; set; }
+    public CoachQuestion? CoachQuestion{get; set;}
+
     
    
 

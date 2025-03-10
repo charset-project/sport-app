@@ -9,21 +9,21 @@ public class User: IdentityUser<int>
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public override int Id { get; set; }
-    [Required]
+    
     [StringLength(15)]
-    public required string FirstName { get; set; }
-    [Required]
+    public string? FirstName { get; set; }
     [StringLength(50)]
-    public required string LastName { get; set; }
-    [Required]
+    public  string? LastName { get; set; }
     public DateTime BirthDate { get; set; }
-    [StringLength(11)]
     [Required]
-    public string PhoneNumber { get; set; }
+    [StringLength(11)]
+    [RegularExpression(@"^09\d{11}$")]
+
+    public required string PhoneNumber { get; set; }
 
     [DataType(DataType.DateTime)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}")]
-    public DateTime CreateDate { get; set; }
+    public DateTime CreateDate { get; set; }=DateTime.Now;
     [DataType(DataType.DateTime)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}")]
     public DateTime LastLogin { get; set; }
@@ -34,4 +34,7 @@ public class User: IdentityUser<int>
     public Athlete? Athlete { get; set; }
     public Coach? Coach { get; set; }
     public TypeOfUser TypeOfUser { get; set; }
+    public string? RefreshToken { get; set; }
+    public DateTime RefreshTokeNExpire { get; set; }
+
 }

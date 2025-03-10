@@ -12,22 +12,18 @@ public class Athlete
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public  int Id {get; set;}
-    public User User {get; set;}
+    public User? User {get; set;}
     public int UserId {get; set;}
-    [Required]
     [Range(1, 300)]
-    public int Height { get; set; }
-    [Required]
+    public int Height {get; set; }
     [Range(1, 300)]
     public int CurrentWeight { get; set; }
-    [Required]
     [Range(1, 300)]
     public int WeightGoal { get; set; }
     public ICollection<WeightEntry> WeightEntries { get; set; } = [];
     public WaterInTake? WaterInTake { get; set; }
     public ICollection<String> Injury { get; set; } = [];
     public ICollection<WaterInDay> WaterInDays { get; set; } = [];
-    //level & Current Body Form can be added  
     public LevelOfAthlete LevelOfAthlete { get; set; }
     public BodyForm CurrentBodyForm { get; set; }
     public BodyForm TargetBodyForm { get; set; }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace sport_app_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Coach_Question : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -56,6 +56,9 @@ namespace sport_app_backend.Migrations
                     Bio = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TypeOfUser = table.Column<int>(type: "int", nullable: false),
+                    RefreshToken = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    RefreshTokeNExpire = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NormalizedUserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
@@ -257,23 +260,18 @@ namespace sport_app_backend.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Coaches",
+                name: "CoachQuestion",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Domain = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    StartCoachingYear = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coaches", x => x.Id);
+                    table.PrimaryKey("PK_CoachQuestion", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Coaches_AspNetUsers_UserId",
+                        name: "FK_CoachQuestion_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -344,6 +342,37 @@ namespace sport_app_backend.Migrations
                         principalTable: "Athletes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Coaches",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Domain = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    StartCoachingYear = table.Column<int>(type: "int", nullable: false),
+                    CoachQuestionId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Coaches", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Coaches_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Coaches_CoachQuestion_CoachQuestionId",
+                        column: x => x.CoachQuestionId,
+                        principalTable: "CoachQuestion",
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -621,6 +650,11 @@ namespace sport_app_backend.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Coaches_CoachQuestionId",
+                table: "Coaches",
+                column: "CoachQuestionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Coaches_UserId",
                 table: "Coaches",
                 column: "UserId",
@@ -630,6 +664,11 @@ namespace sport_app_backend.Migrations
                 name: "IX_Coachplan_CoachId",
                 table: "Coachplan",
                 column: "CoachId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CoachQuestion_UserId",
+                table: "CoachQuestion",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ExerciseInDay_WorkoutProgramInDayId",
@@ -770,6 +809,9 @@ namespace sport_app_backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "Coaches");
+
+            migrationBuilder.DropTable(
+                name: "CoachQuestion");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
