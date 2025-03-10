@@ -7,6 +7,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using sport_app_backend.Models.Account;
 using sport_app_backend.Models;
+using sport_app_backend.Interface;
+using sport_app_backend.Services;
+using sport_app_backend.Repository;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -58,7 +61,9 @@ options.TokenValidationParameters = new TokenValidationParameters
 builder.Services.AddAuthorization();
 
 
-
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<ISendVerifyCodeService, SendVerifyCodeService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
