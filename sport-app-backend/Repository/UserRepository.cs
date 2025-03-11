@@ -65,6 +65,7 @@ public class UserRepository : IUserRepository
                         };
                         _tokenService.CreateRefreshToken(newUser);
                         var result = _userManager.CreateAsync(newUser).Result;
+                        var addRole = _userManager.AddToRoleAsync(newUser,  "none" ).Result;
                         if (result.Succeeded)
                         {
                             return Task.FromResult(new CheckCodeResponseDto()
@@ -138,6 +139,6 @@ public class UserRepository : IUserRepository
         }
     }
 
-
+    
 
 }

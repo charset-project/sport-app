@@ -34,6 +34,7 @@ public class ApplicationDbContext : IdentityDbContext<User,Role,int>
     public DbSet<Exercise> Exercises { get; set; }
     public DbSet<WorkoutProgram> WorkoutPrograms { get; set; }
     public DbSet<CodeVerify> CodeVerifies { get; set; }
+    public DbSet<CoachQuestion> CoachQuestions{get; set;}
 
 
 
