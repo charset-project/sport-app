@@ -1,0 +1,86 @@
+[
+  {
+    "ContainingType": "sport_app_backend.Controller.CoacheController",
+    "Method": "SubmitCoachQuastions",
+    "RelativePath": "api/Coache/CoachQuastions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "coachQuestionDto",
+        "Type": "sport_app_backend.Dtos.CoachQuestionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "sport_app_backend.Controller.UserController",
+    "Method": "AddRole",
+    "RelativePath": "api/User/add role",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "role",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "sport_app_backend.Controller.UserController",
+    "Method": "CheckCode",
+    "RelativePath": "api/User/CheckCode",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "checkCodeRequestDto",
+        "Type": "sport_app_backend.Dtos.CheckCodeRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "sport_app_backend.Dtos.CheckCodeResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "sport_app_backend.Controller.UserController",
+    "Method": "SendCode",
+    "RelativePath": "api/User/SendCode",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserPhoneNumber",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

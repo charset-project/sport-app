@@ -93,6 +93,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<ISendVerifyCodeService, SendVerifyCodeService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICoachRepository, CoachRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
