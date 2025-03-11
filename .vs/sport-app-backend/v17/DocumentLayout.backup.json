@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\dtos\\checkcoderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\dtos\\checkcoderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\dtos\\checkcoderesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\dtos\\checkcoderesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\controller\\coachecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\controller\\coachecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,6 +59,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "CheckCodeResponseDto.cs",
+              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "RelativeDocumentMoniker": "sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "RelativeToolTip": "sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T18:48:14.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CheckCodeRequestDto.cs",
+              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "RelativeDocumentMoniker": "sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "RelativeToolTip": "sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T18:48:11.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Program.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Program.cs",
@@ -63,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "CoachRepository.cs",
               "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Repository\\CoachRepository.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Repository\\CoachRepository.cs",
@@ -76,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ICoachRepository.cs",
               "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Interface\\ICoachRepository.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Interface\\ICoachRepository.cs",
@@ -89,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CoacheController.cs",
               "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Controller\\CoacheController.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Controller\\CoacheController.cs",
@@ -108,7 +142,7 @@
               "RelativeDocumentMoniker": "sport-app-backend\\Controller\\UserController.cs",
               "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Controller\\UserController.cs",
               "RelativeToolTip": "sport-app-backend\\Controller\\UserController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAACQAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAABkAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T07:36:05.259Z",
               "EditorCaption": ""
