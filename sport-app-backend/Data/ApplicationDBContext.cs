@@ -28,6 +28,7 @@ public class ApplicationDbContext : IdentityDbContext<User,Role,int>
         new Role { Id = 4, Name = "None", NormalizedName = "NONE"});
 
     }
+
     public DbSet<Coach> Coaches { get; set; }
     public DbSet<Athlete> Athletes { get; set; }
     public DbSet<Payment> Payments { get; set; }

@@ -4,8 +4,9 @@ namespace sport_app_backend.Services;
 
 public class SendVerifyCodeService : ISendVerifyCodeService
 {
-   public string SendCode(string PhoneNumber)
+   public async Task<string> SendCode(string PhoneNumber)
     {
+        await Task.Delay(100);
         return "12345";
     }
 

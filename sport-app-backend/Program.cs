@@ -60,11 +60,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddAuthentication(options =>
 {
-options.DefaultAuthenticateScheme =
-options.DefaultChallengeScheme =
-options.DefaultForbidScheme =
-options.DefaultScheme =
-options.DefaultSignInScheme =
+options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultForbidScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
 options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
 
 
@@ -87,7 +87,13 @@ options.TokenValidationParameters = new TokenValidationParameters
 
 
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options=>{
+
+    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("Athlete", policy => policy.RequireRole("Athlete"));
+    options.AddPolicy("Coach", policy => policy.RequireRole("Coach"));
+    options.AddPolicy("None", policy => policy.RequireRole("None"));
+});
 
 
 builder.Services.AddScoped<ITokenService, TokenService>();

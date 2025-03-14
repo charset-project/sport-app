@@ -29,14 +29,14 @@ public class UserController(IUserRepository userRepository, UserManager<User> us
     }
 
     [HttpPut("add role")]
-    [Authorize]
-    public  IActionResult AddRole([FromBody] string role){
-    var PhoneNumber =  User.FindFirst(ClaimTypes.Name)?.Value;
-    if(PhoneNumber is null) return BadRequest("PhoneNumber is null");
-    var user = _userManager.FindByNameAsync(PhoneNumber).Result;
-    if(user is null) return BadRequest("user is null");
-    _userManager.AddToRoleAsync(user, role).Wait();
-    return Ok();
+    [Authorize(Roles = "None")]
+    public async Task<IActionResult> AddRole([FromBody] string role)
+    {
+        var PhoneNumber =  User.FindFirst(ClaimTypes.Name)?.Value;
+        if (PhoneNumber is null) return BadRequest("PhoneNumber is null");
+        var user = await _userManager.FindByNameAsync(PhoneNumber);
+        if (user is null) return BadRequest("user is null");
+        return Ok(await _userRepository.AddRole(user, role));
     }
 
     

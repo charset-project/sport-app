@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using sport_app_backend.Data;
 using sport_app_backend.Dtos;
 using sport_app_backend.Interface;
@@ -21,7 +20,7 @@ namespace sport_app_backend.Controller
 
 
         [HttpPost("CoachQuastions")]
-        [Authorize(Roles = "Coach")]
+        [Authorize(Roles="Coach")]
         public async Task<IActionResult> SubmitCoachQuastions([FromBody] CoachQuestionDto coachQuestionDto)
         {
             var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
