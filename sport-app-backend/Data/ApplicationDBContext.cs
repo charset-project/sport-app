@@ -7,6 +7,7 @@ using sport_app_backend.Models.Actions;
 using sport_app_backend.Models.Login_Sinup;
 using sport_app_backend.Models.Payments;
 using sport_app_backend.Models.Program;
+using sport_app_backend.Models.Question.A_Question;
 
 
 
@@ -20,7 +21,6 @@ public class ApplicationDbContext : IdentityDbContext<User,Role,int>
 
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder); 
-          
           builder.Entity<Role>().HasData(
         new Role { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
         new Role { Id = 2, Name = "Athlete", NormalizedName = "ATHLETE" },
@@ -36,6 +36,7 @@ public class ApplicationDbContext : IdentityDbContext<User,Role,int>
     public DbSet<WorkoutProgram> WorkoutPrograms { get; set; }
     public DbSet<CodeVerify> CodeVerifies { get; set; }
     public DbSet<CoachQuestion> CoachQuestions{get; set;}
+    public DbSet<AthleteQuestion> AthleteQuestions{get; set;}
 
 
 

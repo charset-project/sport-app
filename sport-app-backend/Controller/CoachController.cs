@@ -14,7 +14,7 @@ namespace sport_app_backend.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoacheController(ICoachRepository coachRepository) : ControllerBase
+    public class CoachController(ICoachRepository coachRepository) : ControllerBase
     {
         private readonly ICoachRepository _coachRepository = coachRepository;
 

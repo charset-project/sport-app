@@ -34,6 +34,7 @@ public class UserRepository : IUserRepository
             await _context.Coaches.AddAsync(user.Coach);
             await _context.SaveChangesAsync();
             await _userManager.AddToRoleAsync(user, "Coach");
+            
 
             return new AddRoleResponse(){Message="Coach added successfully",
                RefreshToken= user.RefreshToken,

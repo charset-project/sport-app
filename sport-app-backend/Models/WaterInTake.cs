@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using sport_app_backend.Models.Account;
 
+
 namespace sport_app_backend.Models;
 
 public class WaterInTake

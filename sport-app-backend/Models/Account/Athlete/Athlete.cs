@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Identity;
 using sport_app_backend.Models.Payments;
 using sport_app_backend.Models.Program;
+using sport_app_backend.Models.Question.A_Question;
 
 
 namespace sport_app_backend.Models.Account;
@@ -25,8 +25,9 @@ public class Athlete
     public ICollection<String> Injury { get; set; } = [];
     public ICollection<WaterInDay> WaterInDays { get; set; } = [];
     public LevelOfAthlete LevelOfAthlete { get; set; }
-    public BodyForm CurrentBodyForm { get; set; }
-    public BodyForm TargetBodyForm { get; set; }
+    public int CurrentBodyForm { get; set; }
+    public int TargetBodyForm { get; set; }
     public ICollection<Payment> Payments { get; set; } = [];
     public ICollection<WorkoutProgram> WorkoutPrograms { get; set; } = [];
+    public AthleteQuestion? AthleteQuestion { get; set; }
 }

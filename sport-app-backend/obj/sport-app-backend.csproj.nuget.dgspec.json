@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj": {}
+    "D:\\403-1\\es-402\\sport-app\\sport-app-backend\\sport-app-backend.csproj": {}
   },
   "projects": {
-    "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj": {
+    "D:\\403-1\\es-402\\sport-app\\sport-app-backend\\sport-app-backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj",
+        "projectUniqueName": "D:\\403-1\\es-402\\sport-app\\sport-app-backend\\sport-app-backend.csproj",
         "projectName": "sport-app-backend",
-        "projectPath": "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\sport-app-backend.csproj",
-        "packagesPath": "C:\\Users\\paniz\\.nuget\\packages\\",
-        "outputPath": "I:\\403-1\\es-402\\sport-app-backend\\sport-app-backend\\obj\\",
+        "projectPath": "D:\\403-1\\es-402\\sport-app\\sport-app-backend\\sport-app-backend.csproj",
+        "packagesPath": "C:\\Users\\Mohamad\\.nuget\\packages\\",
+        "outputPath": "D:\\403-1\\es-402\\sport-app\\sport-app-backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paniz\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Mohamad\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -99,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.310/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
