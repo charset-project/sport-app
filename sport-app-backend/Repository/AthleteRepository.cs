@@ -15,16 +15,16 @@ namespace sport_app_backend.Repository
     public class AthleteRepository : IAthleteRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
-        public AthleteRepository(ApplicationDbContext context, UserManager<User> userManager)
+        private readonly DbSet<User> _userManager;
+        public AthleteRepository(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
+            _userManager = context.Users;
         }
 
         public async Task<bool> SubmitAthleteQuestions(string phoneNumber, AthleteQuestionDto AthleteQuestionDto)
         {
-            var user = await _userManager.FindByNameAsync(phoneNumber);
+            var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
             if (user is null) return false;
             var athlete = user.Athlete;
             if (athlete is null) return false;
@@ -54,12 +54,5 @@ namespace sport_app_backend.Repository
 
         }
 
-        public async Task<Athlete> GetAthleteByUserId(int userId)
-        {
-           
-               var athlete = await _context.Athletes.FirstOrDefaultAsync(x => x.UserId == userId);
-            
-            return athlete ?? throw new Exception("Athlete not found");
-        }
     }
 }

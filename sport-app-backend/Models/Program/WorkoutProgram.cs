@@ -22,5 +22,5 @@ public class WorkoutProgram
     public int Duration { get; set; }
     public string Description { get; set; } = "";
     public int NumberOfRepeats { get; set; }    
-    public ICollection<WorkoutProgramInDay>? WorkoutProgramInDays { get; set; }    
+    public List<WorkoutProgramInDay>? WorkoutProgramInDays { get; set; }    
 }

@@ -12,7 +12,7 @@ public class WorkoutProgramInDay
 
     public int ForWhichDay { get; set; }
 
-    public ICollection<ExerciseInDay> AllExerciseInDays { get; set; }= new List<ExerciseInDay>();
+    public List<ExerciseInDay> AllExerciseInDays { get; set; }= new List<ExerciseInDay>();
 
 
     

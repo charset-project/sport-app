@@ -10,10 +10,10 @@ using sport_app_backend.Models.Account;
 namespace sport_app_backend.Controller;
 [Route("api/[controller]")]
 [ApiController]
-public class UserController(IUserRepository userRepository, UserManager<User> userManager) : ControllerBase
+public class UserController(IUserRepository userRepository) : ControllerBase
 {   
     private readonly IUserRepository _userRepository = userRepository;
-    private readonly UserManager<User> _userManager = userManager;
+   
 
     [HttpPost("CheckCode")]
     public async Task<CheckCodeResponseDto> CheckCode([FromBody] CheckCodeRequestDto checkCodeRequestDto)
@@ -34,9 +34,7 @@ public class UserController(IUserRepository userRepository, UserManager<User> us
     {
         var PhoneNumber =  User.FindFirst(ClaimTypes.Name)?.Value;
         if (PhoneNumber is null) return BadRequest("PhoneNumber is null");
-        var user = await _userManager.FindByNameAsync(PhoneNumber);
-        if (user is null) return BadRequest("user is null");
-        return Ok(await _userRepository.AddRole(user, role));
+        return Ok(await _userRepository.AddRole(PhoneNumber, role));
     }
 
     

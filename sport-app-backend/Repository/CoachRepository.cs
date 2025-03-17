@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using sport_app_backend.Data;
 using sport_app_backend.Dtos;
 using sport_app_backend.Interface;
@@ -10,20 +11,20 @@ namespace sport_app_backend.Repository
     public class CoachRepository : ICoachRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
+        private readonly DbSet<User> _userManager;
 
-        public CoachRepository(ApplicationDbContext context, UserManager<User> userManager)
+        public CoachRepository(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
+            _userManager = _context.Users;
         }
 
         public async Task<bool> SubmitCoachQuestions(string phoneNumber, CoachQuestionDto coachQuestionDto)
-        {
-            var user = await _userManager.FindByNameAsync(phoneNumber);
+        {  
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
             if (user is null) return false;
-            var isCoach = await _userManager.IsInRoleAsync(user, "Coach");
-            if (!isCoach) return false;
+            var coach = user.Coach;
+            if (coach == null) return false; // Ensure the user is a coach
             var coachQuestion = new CoachQuestion
             {
                 UserId = user.Id,
@@ -37,6 +38,7 @@ namespace sport_app_backend.Repository
                 DifficultTrackAthletes = coachQuestionDto.DifficultTrackAthletes,
                 HardCommunicationWithAthletes = coachQuestionDto.HardCommunicationWithAthletes
             };
+            coach.CoachQuestion = coachQuestion;
             _context.CoachQuestions.Add(coachQuestion);
             await _context.SaveChangesAsync();
             return true;

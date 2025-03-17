@@ -6,27 +6,28 @@ using sport_app_backend.Models.Program;
 
 namespace sport_app_backend.Models.Account;
 
-public class Coach 
-{   
+public class Coach
+{
     [Key]
-    public int Id {get; set;}
-    public User? User {get; set;}
-    public int UserId {get; set;}
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public User? User { get; set; }
     [EmailAddress]
     [StringLength(50)]
     public string Email { get; set; } = "";
-    public ICollection<CoachingDomain>? Domain { get; set; }
-    
+    public List<CoachingDomain>? Domain { get; set; }
+
     public int StartCoachingYear { get; set; }
-    
-    public ICollection<Coachplan>? Coachplans { get; set; } 
-    public ICollection<Payment>? Payments { get; set; }
-    public ICollection<WorkoutProgram>? WorkoutPrograms { get; set; }
-    public CoachQuestion? CoachQuestion{get; set;}
 
-    
-   
+    public List<Coachplan>? Coachplans { get; set; }
+    public List<Payment>? Payments { get; set; }
+    public List<WorkoutProgram>? WorkoutPrograms { get; set; }
+    public CoachQuestion? CoachQuestion { get; set; }
 
 
-    
+
+
+
+
 }

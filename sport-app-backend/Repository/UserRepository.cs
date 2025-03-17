@@ -10,61 +10,73 @@ namespace sport_app_backend.Repository;
 
 public class UserRepository : IUserRepository
 {
-    private readonly UserManager<User> _userManager;
+    private readonly DbSet<User> _userManager;
     private readonly ApplicationDbContext _context;
     private readonly ISendVerifyCodeService _sendVerifyCode;
     private readonly ITokenService _tokenService;
 
-    public UserRepository(ApplicationDbContext dbContext, ITokenService tokenService, UserManager<User> userManager, ISendVerifyCodeService sendVerifyCode)
+    public UserRepository(ApplicationDbContext dbContext, ITokenService tokenService, ISendVerifyCodeService sendVerifyCode)
     {
         _context = dbContext;
-        _userManager = userManager;
+        _userManager = _context.Users;
         _sendVerifyCode = sendVerifyCode;
         _tokenService = tokenService;
 
     }
 
-    public async Task<AddRoleResponse> AddRole(User user, string role)
+    public async Task<AddRoleResponse> AddRole(string phoneNumber, string role)
     {
-        if(role.Equals("Coach")){
+        var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+        if (user is null) return new AddRoleResponse() { Message = "User not found" };
+        if (role.Equals("Coach"))
+        {
             user.TypeOfUser = TypeOfUser.Coach;
-            user.Coach = new Coach();
-            user.Coach.User=user;
-            user.Coach.UserId=user.Id;
+            user.Coach = new Coach
+            {
+                User = user,
+                UserId = user.Id
+            };
+            user.TypeOfUser = TypeOfUser.Coach;
             await _context.Coaches.AddAsync(user.Coach);
             await _context.SaveChangesAsync();
-            await _userManager.AddToRoleAsync(user, "Coach");
-            
-
-            return new AddRoleResponse(){Message="Coach added successfully",
-               RefreshToken= user.RefreshToken,
-                AccessToken = _tokenService.CreateToken(user),
-                TypeOfUser = user.TypeOfUser};
-
-        }else if(role.Equals("Athlete")){
-            user.TypeOfUser = TypeOfUser.Athlete;
-            user.Athlete = new Athlete();
-            user.Athlete.User=user;
-            user.Athlete.UserId=user.Id;
-            _context.Athletes.Add(user.Athlete);
-            await _context.SaveChangesAsync();
-            await _userManager.AddToRoleAsync(user, "Athlete");
-
-            return new AddRoleResponse(){
-                Message="Athlete added successfully",
-                RefreshToken= user.RefreshToken,
+            return new AddRoleResponse()
+            {
+                Message = "Coach added successfully",
+                RefreshToken = user.RefreshToken,
                 AccessToken = _tokenService.CreateToken(user),
                 TypeOfUser = user.TypeOfUser
             };
-            }else{
-                return new AddRoleResponse(){Message="Role not found"};
-            }
+
+        }
+        else if (role.Equals("Athlete"))
+        {
+            user.TypeOfUser = TypeOfUser.Athlete;
+            user.Athlete = new Athlete
+            {
+                User = user,
+                UserId = user.Id
+            };
+            user.TypeOfUser = TypeOfUser.Athlete;
+            await _context.Athletes.AddAsync(user.Athlete);
+            await _context.SaveChangesAsync();
+            return new AddRoleResponse()
+            {
+                Message = "Athlete added successfully",
+                RefreshToken = user.RefreshToken,
+                AccessToken = _tokenService.CreateToken(user),
+                TypeOfUser = user.TypeOfUser
+            };
+        }
+        else
+        {
+            return new AddRoleResponse() { Message = "Role not found" };
+        }
     }
 
     public async Task<CheckCodeResponseDto> CheckCode(CheckCodeRequestDto checkCodeRequestDto)
     {
         var user = await _context.CodeVerifies.FirstOrDefaultAsync(x => x.PhoneNumber == checkCodeRequestDto.PhoneNumber);
-    
+
         if (user != null)
         {
             _context.CodeVerifies.Remove(user);
@@ -79,10 +91,11 @@ public class UserRepository : IUserRepository
             }
             else
             {
-                if (user.Code == checkCodeRequestDto.Code){
-                    var userEntity = await _userManager.FindByNameAsync(checkCodeRequestDto.PhoneNumber);
+                if (user.Code == checkCodeRequestDto.Code)
+                {
+                    var userEntity = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == checkCodeRequestDto.PhoneNumber);
                     if (userEntity != null)
-                    {   
+                    {
 
                         return new CheckCodeResponseDto()
                         {
@@ -99,32 +112,25 @@ public class UserRepository : IUserRepository
                         {
                             PhoneNumber = checkCodeRequestDto.PhoneNumber,
                             TypeOfUser = TypeOfUser.None,
-                            UserName = checkCodeRequestDto.PhoneNumber,
                         };
                         _tokenService.CreateRefreshToken(newUser);
-                        var result = _userManager.CreateAsync(newUser).Result;
-                        var addRole = _userManager.AddToRoleAsync(newUser,  "none" ).Result;
-                        if (result.Succeeded)
-                        {
-                            return new CheckCodeResponseDto()
-                            {
-                                IsSuccess = true,
-                                Message = "CodeIsCorrect",
-                                RefreshToken = newUser.RefreshToken,
-                                AccessToken = _tokenService.CreateToken(newUser),
-                                TypeOfUser = newUser.TypeOfUser
-                            };
-                        }
-                    }
+                        var result = await _userManager.AddAsync(newUser);
+                        var result2 = await _context.SaveChangesAsync();
+                        
 
-                    {
                         return new CheckCodeResponseDto()
                         {
-                            IsSuccess = false,
-                            Message = "CodeIsNotCorrect"
+                            IsSuccess = true,
+                            Message = "CodeIsCorrect",
+                            RefreshToken = newUser.RefreshToken,
+                            AccessToken = _tokenService.CreateToken(newUser),
+                            TypeOfUser = newUser.TypeOfUser
                         };
                     }
-                }}
+
+
+                }
+            }
 
             return new CheckCodeResponseDto()
             {
@@ -180,6 +186,6 @@ public class UserRepository : IUserRepository
         }
     }
 
-    
+
 
 }

@@ -11,23 +11,23 @@ public class Athlete
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public  int Id {get; set;}
-    public User? User {get; set;}
-    public int UserId {get; set;}
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public User? User { get; set; }
     [Range(1, 300)]
-    public int Height {get; set; }
+    public int Height { get; set; }
     [Range(1, 300)]
     public int CurrentWeight { get; set; }
     [Range(1, 300)]
     public int WeightGoal { get; set; }
-    public ICollection<WeightEntry> WeightEntries { get; set; } = [];
+    public List<WeightEntry> WeightEntries { get; set; } = [];
     public WaterInTake? WaterInTake { get; set; }
-    public ICollection<String> Injury { get; set; } = [];
-    public ICollection<WaterInDay> WaterInDays { get; set; } = [];
+    public List<String> Injury { get; set; } = [];
+    public List<WaterInDay> WaterInDays { get; set; } = [];
     public LevelOfAthlete LevelOfAthlete { get; set; }
     public int CurrentBodyForm { get; set; }
     public int TargetBodyForm { get; set; }
-    public ICollection<Payment> Payments { get; set; } = [];
-    public ICollection<WorkoutProgram> WorkoutPrograms { get; set; } = [];
+    public List<Payment> Payments { get; set; } = [];
+    public List<WorkoutProgram> WorkoutPrograms { get; set; } = [];
     public AthleteQuestion? AthleteQuestion { get; set; }
 }

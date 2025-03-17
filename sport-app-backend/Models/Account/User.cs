@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace sport_app_backend.Models.Account;
 
-public class User: IdentityUser<int>
+public class User
 {   
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public override int Id { get; set; }
+    public  int Id { get; set; }
     
     [StringLength(15)]
     public string? FirstName { get; set; }

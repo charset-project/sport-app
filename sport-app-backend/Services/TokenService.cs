@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using sport_app_backend.Data;
 using sport_app_backend.Interface;
@@ -18,10 +19,11 @@ public class TokenService: ITokenService
         private readonly IConfiguration _config;
         private readonly SymmetricSecurityKey _key;
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
-        public TokenService(IConfiguration config,ApplicationDbContext dbContext,UserManager<User> userManager)
-        {    _userManager = userManager;
+        private readonly DbSet<User> _userManager;
+        public TokenService(IConfiguration config,ApplicationDbContext dbContext)
+        {    
             _context = dbContext;
+            _userManager = dbContext.Users;
             _config = config;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Signinkey"]));
         }
@@ -47,10 +49,15 @@ public class TokenService: ITokenService
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
-        var userRoles = _userManager.GetRolesAsync(user).Result;
+        var userRoles = user.TypeOfUser switch
+        {
+            TypeOfUser.Coach => new[] { "Coach" },
+            TypeOfUser.Athlete => new[] { "Athlete" },
+            TypeOfUser.None => new[] { "None" },
+        };
+        
         
         claims = claims.Concat(userRoles.Select(role => new Claim(ClaimTypes.Role, role))).ToArray();
-
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),

@@ -50,10 +50,9 @@ var ConnectionStrings = builder.Configuration.GetConnectionString("DefaultConnec
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
  options.UseMySql(ConnectionStrings,
         ServerVersion.AutoDetect(ConnectionStrings)));
-  builder.Services.AddIdentity<User, Role>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
-        
+
+
+
 
 
 

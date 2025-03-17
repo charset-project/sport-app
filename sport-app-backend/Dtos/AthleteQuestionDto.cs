@@ -16,9 +16,9 @@ namespace sport_app_backend.Dtos
         public int CurrentBodyForm { get; set; }
         public int TargetBodyForm { get; set; }
         public ExerciseGoal? ExerciseGoal { get; set; }
-        public ICollection<ExerciseMotivation>? ExerciseMotivation { get; set; }
-        public ICollection<InjuryArea>? InjuryArea { get; set; }
-        public ICollection<CommonIssues>? CommonIssues { get; set; }
+        public List<ExerciseMotivation>? ExerciseMotivation { get; set; }
+        public List<InjuryArea>? InjuryArea { get; set; }
+        public List<CommonIssues>? CommonIssues { get; set; }
         public FitnessLevel? FitnessLevel { get; set; }
 
 
