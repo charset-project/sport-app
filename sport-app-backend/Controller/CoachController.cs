@@ -31,5 +31,7 @@ namespace sport_app_backend.Controller
 
             return Ok(new { Message = "Coach questions submitted successfully" });
         }
+       
+
     }
 }

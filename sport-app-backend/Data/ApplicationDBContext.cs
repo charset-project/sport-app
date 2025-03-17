@@ -39,6 +39,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<CodeVerify> CodeVerifies { get; set; }
     public DbSet<CoachQuestion> CoachQuestions { get; set; }
     public DbSet<AthleteQuestion> AthleteQuestions { get; set; }
+    public DbSet<WaterInTake> WaterInTakes { get; set; }
+    public DbSet<WaterInDay> WaterInDays { get; set; }
 
 
 

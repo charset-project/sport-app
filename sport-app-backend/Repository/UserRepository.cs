@@ -111,6 +111,7 @@ public class UserRepository : IUserRepository
                             PhoneNumber = checkCodeRequestDto.PhoneNumber,
                             TypeOfUser = TypeOfUser.None,
                         };
+                        newUser.LastLogin = DateTime.Now;
                         _tokenService.CreateRefreshToken(newUser);
                         var result = await _context.Users.AddAsync(newUser);
                         var result2 = await _context.SaveChangesAsync();

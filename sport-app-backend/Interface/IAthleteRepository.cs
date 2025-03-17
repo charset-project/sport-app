@@ -8,6 +8,8 @@ namespace sport_app_backend.Interface
 {
     public interface IAthleteRepository
     {
-    public  Task<bool> SubmitAthleteQuestions(string phoneNumber, AthleteQuestionDto AthleteQuestionDto);
+        public Task<bool> SubmitAthleteQuestions(string phoneNumber, AthleteQuestionDto AthleteQuestionDto);
+        public Task<bool> AddWaterIntake(string phoneNumber, WaterInTakeDto waterInTakeDto);
+        public Task<bool> UpdateWaterInDay(string phoneNumber);
     }
 }
