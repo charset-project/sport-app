@@ -10,7 +10,6 @@ namespace sport_app_backend.Repository;
 
 public class UserRepository : IUserRepository
 {
-    private readonly DbSet<User> _userManager;
     private readonly ApplicationDbContext _context;
     private readonly ISendVerifyCodeService _sendVerifyCode;
     private readonly ITokenService _tokenService;
@@ -18,7 +17,6 @@ public class UserRepository : IUserRepository
     public UserRepository(ApplicationDbContext dbContext, ITokenService tokenService, ISendVerifyCodeService sendVerifyCode)
     {
         _context = dbContext;
-        _userManager = _context.Users;
         _sendVerifyCode = sendVerifyCode;
         _tokenService = tokenService;
 
@@ -26,16 +24,16 @@ public class UserRepository : IUserRepository
 
     public async Task<AddRoleResponse> AddRole(string phoneNumber, string role)
     {
-        var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
         if (user is null) return new AddRoleResponse() { Message = "User not found" };
         if (role.Equals("Coach"))
         {
             user.TypeOfUser = TypeOfUser.Coach;
-            user.Coach = new Coach
-            {
+            var coach = new Coach(){
                 User = user,
                 UserId = user.Id
             };
+            user.Coach = coach;
             user.TypeOfUser = TypeOfUser.Coach;
             await _context.Coaches.AddAsync(user.Coach);
             await _context.SaveChangesAsync();
@@ -93,10 +91,10 @@ public class UserRepository : IUserRepository
             {
                 if (user.Code == checkCodeRequestDto.Code)
                 {
-                    var userEntity = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == checkCodeRequestDto.PhoneNumber);
+                    var userEntity = await _context.Users.FirstOrDefaultAsync(x => x.PhoneNumber == checkCodeRequestDto.PhoneNumber);
                     if (userEntity != null)
                     {
-
+                        userEntity.LastLogin = DateTime.Now;
                         return new CheckCodeResponseDto()
                         {
                             IsSuccess = true,
@@ -114,7 +112,7 @@ public class UserRepository : IUserRepository
                             TypeOfUser = TypeOfUser.None,
                         };
                         _tokenService.CreateRefreshToken(newUser);
-                        var result = await _userManager.AddAsync(newUser);
+                        var result = await _context.Users.AddAsync(newUser);
                         var result2 = await _context.SaveChangesAsync();
                         
 
@@ -186,6 +184,12 @@ public class UserRepository : IUserRepository
         }
     }
 
-
+    public async Task<string> GenerateAccessToken(string refreshToken)
+    {
+       var user = await _context.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
+        if (user is null) return "User not found";
+        if (user.RefreshTokeNExpire < DateTime.Now) return "Refresh token expired";
+        return _tokenService.CreateToken(user);
+    }
 
 }

@@ -34,6 +34,8 @@ namespace sport_app_backend.Repository
             athlete.WeightGoal = AthleteQuestionDto.TargetWeight;
             athlete.CurrentBodyForm = AthleteQuestionDto.CurrentBodyForm;
             athlete.TargetBodyForm = AthleteQuestionDto.TargetBodyForm;
+            athlete.InjuryArea = AthleteQuestionDto.InjuryArea ?? [];
+            athlete.FitnessLevel = AthleteQuestionDto.FitnessLevel;
 
             var athleteQuestion = new AthleteQuestion
             {
@@ -41,9 +43,7 @@ namespace sport_app_backend.Repository
                 Athlete = athlete,
                 ExerciseGoal = AthleteQuestionDto.ExerciseGoal,
                 ExerciseMotivation = AthleteQuestionDto.ExerciseMotivation,
-                InjuryArea = AthleteQuestionDto.InjuryArea,
                 CommonIssues = AthleteQuestionDto.CommonIssues,
-                FitnessLevel = AthleteQuestionDto.FitnessLevel
 
             };
             athlete.AthleteQuestion = athleteQuestion;

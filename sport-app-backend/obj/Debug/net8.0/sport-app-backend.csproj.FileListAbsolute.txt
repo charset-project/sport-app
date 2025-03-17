@@ -347,3 +347,5 @@ D:\403-1\es-402\sport-app\sport-app-backend\obj\Debug\net8.0\refint\sport-app-ba
 D:\403-1\es-402\sport-app\sport-app-backend\obj\Debug\net8.0\sport-app-backend.pdb
 D:\403-1\es-402\sport-app\sport-app-backend\obj\Debug\net8.0\sport-app-backend.genruntimeconfig.cache
 D:\403-1\es-402\sport-app\sport-app-backend\obj\Debug\net8.0\ref\sport-app-backend.dll
+d:\403-1\es-402\sport-app\sport-app-backend\bin\Debug\net8.0\Castle.Core.dll
+d:\403-1\es-402\sport-app\sport-app-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll

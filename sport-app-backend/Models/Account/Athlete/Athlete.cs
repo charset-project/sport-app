@@ -22,9 +22,9 @@ public class Athlete
     public int WeightGoal { get; set; }
     public List<WeightEntry> WeightEntries { get; set; } = [];
     public WaterInTake? WaterInTake { get; set; }
-    public List<String> Injury { get; set; } = [];
+    public List<InjuryArea> InjuryArea { get; set; } = [];
     public List<WaterInDay> WaterInDays { get; set; } = [];
-    public LevelOfAthlete LevelOfAthlete { get; set; }
+    public FitnessLevel? FitnessLevel { get; set; }
     public int CurrentBodyForm { get; set; }
     public int TargetBodyForm { get; set; }
     public List<Payment> Payments { get; set; } = [];

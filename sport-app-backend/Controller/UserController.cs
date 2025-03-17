@@ -37,5 +37,11 @@ public class UserController(IUserRepository userRepository) : ControllerBase
         return Ok(await _userRepository.AddRole(PhoneNumber, role));
     }
 
+    [HttpPost("AccsessToken")]
+    public async Task<IActionResult> AccsessTokenGenerator([FromBody] string refreshToken)
+    {
+        return Ok(await _userRepository.GenerateAccessToken(refreshToken));
+    }
+
     
 }

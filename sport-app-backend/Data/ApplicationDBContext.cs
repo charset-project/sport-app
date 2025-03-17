@@ -19,10 +19,16 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions dbContextOptions)
         : base(dbContextOptions)
     { }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+         modelBuilder.Entity<User>()
+        .Navigation(u => u.Coach)
+        .AutoInclude(); 
+
+         modelBuilder.Entity<User>()
+        .Navigation(u => u.Athlete)
+        .AutoInclude(); 
     }
     public DbSet<User> Users { get; set; }
     public DbSet<Coach> Coaches { get; set; }

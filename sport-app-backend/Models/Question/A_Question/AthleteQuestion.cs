@@ -15,9 +15,7 @@ namespace sport_app_backend.Models.Question.A_Question
         public Athlete? Athlete { get; set; }
         public ExerciseGoal? ExerciseGoal { get; set; }
         public List<ExerciseMotivation>? ExerciseMotivation { get; set; }
-        public List<InjuryArea>? InjuryArea { get; set; }
         public List<CommonIssues>? CommonIssues { get; set; }
-        public FitnessLevel? FitnessLevel { get; set; }
         
     }
 }

@@ -11,12 +11,12 @@ namespace sport_app_backend.Repository
     public class CoachRepository : ICoachRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<User> _userManager;
+    
 
         public CoachRepository(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = _context.Users;
+         
         }
 
         public async Task<bool> SubmitCoachQuestions(string phoneNumber, CoachQuestionDto coachQuestionDto)
