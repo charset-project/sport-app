@@ -19,12 +19,12 @@ namespace sport_app_backend.Repository
          
         }
 
-        public async Task<bool> SubmitCoachQuestions(string phoneNumber, CoachQuestionDto coachQuestionDto)
+        public async Task<ApiResponse> SubmitCoachQuestions(string phoneNumber, CoachQuestionDto coachQuestionDto)
         {  
             var user = await _context.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            if (user is null) return false;
+            if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
             var coach = user.Coach;
-            if (coach == null) return false; // Ensure the user is a coach
+            if (coach == null) return new ApiResponse() { Message = "User is not a coach", Action = false };// Ensure the user is a coach
             var coachQuestion = new CoachQuestion
             {
                 UserId = user.Id,
@@ -41,7 +41,11 @@ namespace sport_app_backend.Repository
             coach.CoachQuestion = coachQuestion;
             _context.CoachQuestions.Add(coachQuestion);
             await _context.SaveChangesAsync();
-            return true;
+            return new ApiResponse()
+            {
+                Message = "Coach questions submitted successfully",
+                Action = true
+            };
         }
     }
 }

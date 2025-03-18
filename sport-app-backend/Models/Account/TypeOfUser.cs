@@ -1,9 +1,9 @@
 namespace sport_app_backend.Models.Account;
 
 public enum TypeOfUser
-{  
-    Athlete,
-    Coach,
-    None
+{   ADMIN,
+    ATHLETE,
+    COACH,
+    NONE
     
     }

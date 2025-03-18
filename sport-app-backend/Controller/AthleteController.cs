@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using sport_app_backend.Data;
 using sport_app_backend.Dtos;
 using sport_app_backend.Interface;
+using sport_app_backend.Models;
 
 namespace sport_app_backend.Controller
 {
@@ -34,8 +35,8 @@ namespace sport_app_backend.Controller
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
 
             var result = await _athleteRepository.SubmitAthleteQuestions(phoneNumber, athleteQuestionDto);
-            if (!result) return BadRequest("Failed to add athlete question");
-            return Ok(new { Message = "Athlete question added successfully" });
+            if (!result.Action) return BadRequest(result.Message);
+            return Ok();
         }
 
         [HttpPost("add_water_intake")]
@@ -46,8 +47,8 @@ namespace sport_app_backend.Controller
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
 
             var result = await _athleteRepository.AddWaterIntake(phoneNumber, waterInTakeDto);
-            if (!result) return BadRequest("Failed to add water intake");
-            return Ok(new { Message = "Water intake added successfully" });
+            if (!result.Action) return BadRequest(result);
+            return Ok(result);
         }
 
 
@@ -61,13 +62,23 @@ namespace sport_app_backend.Controller
                 .Include(u => u.Athlete)
                 .ThenInclude(a => a.WaterInTake)
                 .FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
-                  if (user is null || user.Athlete == null || user.Athlete.WaterInTake == null) {
-                      return NotFound("Water intake not found");
-                  }else{
-                      return Ok(new WaterInTakeDto{
-                          DailyCupOfWater = user.Athlete.WaterInTake.DailyCupOfWater,
-                          Reminder = user.Athlete.WaterInTake.Reminder});
-                  }
+            if (user is null || user.Athlete == null || user.Athlete.WaterInTake == null)
+            {
+                return NotFound("Water intake not found");
+            }
+            else
+            {
+                return Ok(new ApiResponse()
+                {
+                    Action = true,
+                    Message = "Water intake found",
+                    Result = new WaterInTakeDto()
+                    {
+                        DailyCupOfWater = user.Athlete.WaterInTake.DailyCupOfWater,
+                        Reminder = user.Athlete.WaterInTake.Reminder
+                    }
+                });
+            }
         }
 
 
@@ -79,16 +90,16 @@ namespace sport_app_backend.Controller
             var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
             var result = await _athleteRepository.UpdateWaterInDay(phoneNumber);
-            if (!result) return BadRequest("Failed to update water in day");
-            return Ok(new { Message = "Water in day updated successfully" });
-        }  
+            if (!result.Action) return BadRequest(result);
+            return Ok(result);
+        }
 
 
         [HttpGet("get_water_in_day")]
         [Authorize(Roles = "Athlete")]
         // This endpoint retrieves the water intake records for the current day for the authenticated athlete.
         //this data for last30 days but in Hijri solar calendar
-        public async Task<IActionResult> GetWaterInDay()
+        public async Task<IActionResult> GetWaterInDayForLast7Days()
         {
             var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
@@ -100,15 +111,21 @@ namespace sport_app_backend.Controller
                 .Where(w => w.AthleteId == athlete.Athlete.Id && w.Date.Date >= DateTime.UtcNow.Date.AddDays(-70))
                 .ToListAsync();
 
-            return Ok(ListOfWaterInDay.Select(w => new WaterInDayDto()
+            return Ok(new ApiResponse()
             {
-            
-                NumberOfCupsDrinked = w.NumberOfCupsDrinked,
-                Date = w.Date.ToString("yyyy-MM-dd") // Format the date as needed
-            }));
-                
+                Action = true,
+                Message = "Water intake found",
+                Result = ListOfWaterInDay.Select(w => new WaterInDayDto()
+                {
+
+                    NumberOfCupsDrinked = w.NumberOfCupsDrinked,
+                    Date = w.Date.ToString("yyyy-MM-dd") // Format the date as needed
+                })
+            });
+
         }
 
 
     }
+
 }

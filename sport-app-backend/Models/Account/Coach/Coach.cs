@@ -16,6 +16,7 @@ public class Coach
     [EmailAddress]
     [StringLength(50)]
     public string Email { get; set; } = "";
+  
     public List<CoachingDomain>? Domain { get; set; }
 
     public int StartCoachingYear { get; set; }

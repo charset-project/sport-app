@@ -11,8 +11,8 @@ using sport_app_backend.Data;
 namespace sport_app_backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250318172927_waterIntakes")]
-    partial class waterIntakes
+    [Migration("20250318180232_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

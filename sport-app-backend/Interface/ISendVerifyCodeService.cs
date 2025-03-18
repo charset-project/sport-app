@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using sport_app_backend.Models;
 
 namespace sport_app_backend.Interface;
 

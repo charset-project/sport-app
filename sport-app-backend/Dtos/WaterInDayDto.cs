@@ -10,7 +10,7 @@ namespace sport_app_backend.Dtos
     {
     public int NumberOfCupsDrinked {get; set;}
    
-    public string Date {get; set;}
+    public required string Date {get; set;}
     
     }
 }

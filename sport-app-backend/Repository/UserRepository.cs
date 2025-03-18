@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using sport_app_backend.Data;
 using sport_app_backend.Dtos;
 using sport_app_backend.Interface;
+using sport_app_backend.Models;
 using sport_app_backend.Models.Account;
 using sport_app_backend.Models.Login_Sinup;
 
@@ -22,10 +23,10 @@ public class UserRepository : IUserRepository
 
     }
 
-    public async Task<AddRoleResponse> AddRole(string phoneNumber, string role)
+    public async Task<ApiResponse> AddRole(string phoneNumber, string role)
     {
         var user = await _context.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-        if (user is null) return new AddRoleResponse() { Message = "User not found" };
+        if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
         if (role.Equals("Coach"))
         {
             user.TypeOfUser = TypeOfUser.Coach;
@@ -37,12 +38,14 @@ public class UserRepository : IUserRepository
             user.TypeOfUser = TypeOfUser.Coach;
             await _context.Coaches.AddAsync(user.Coach);
             await _context.SaveChangesAsync();
-            return new AddRoleResponse()
-            {
+            return new ApiResponse(){
                 Message = "Coach added successfully",
-                RefreshToken = user.RefreshToken,
-                AccessToken = _tokenService.CreateToken(user),
-                TypeOfUser = user.TypeOfUser
+               Action = true,
+               Result = new AddRoleResponse(){ 
+                   RefreshToken = user.RefreshToken, 
+                   AccessToken = _tokenService.CreateToken(user),
+                     TypeOfUser = user.TypeOfUser.ToString()
+               }
             };
 
         }
@@ -57,21 +60,23 @@ public class UserRepository : IUserRepository
             user.TypeOfUser = TypeOfUser.Athlete;
             await _context.Athletes.AddAsync(user.Athlete);
             await _context.SaveChangesAsync();
-            return new AddRoleResponse()
-            {
+            return new ApiResponse(){
                 Message = "Athlete added successfully",
-                RefreshToken = user.RefreshToken,
-                AccessToken = _tokenService.CreateToken(user),
-                TypeOfUser = user.TypeOfUser
+               Action = true,
+               Result = new AddRoleResponse(){ 
+                   RefreshToken = user.RefreshToken, 
+                   AccessToken = _tokenService.CreateToken(user),
+                     TypeOfUser = user.TypeOfUser.ToString()
+               }
             };
         }
         else
         {
-            return new AddRoleResponse() { Message = "Role not found" };
+            return new ApiResponse() { Message = "Invalid role", Action = false };
         }
     }
 
-    public async Task<CheckCodeResponseDto> CheckCode(CheckCodeRequestDto checkCodeRequestDto)
+    public async Task<ApiResponse> CheckCode(CheckCodeRequestDto checkCodeRequestDto)
     {
         var user = await _context.CodeVerifies.FirstOrDefaultAsync(x => x.PhoneNumber == checkCodeRequestDto.PhoneNumber);
 
@@ -81,10 +86,10 @@ public class UserRepository : IUserRepository
             await _context.SaveChangesAsync();
             if (user.TimeCodeSend.AddMinutes(15) < DateTime.Now)
             {
-                return new CheckCodeResponseDto()
+                return new ApiResponse()
                 {
-                    IsSuccess = false,
-                    Message = "TimeOut"
+                    Action = false,
+                    Message = "Code Expired"
                 };
             }
             else
@@ -95,13 +100,17 @@ public class UserRepository : IUserRepository
                     if (userEntity != null)
                     {
                         userEntity.LastLogin = DateTime.Now;
-                        return new CheckCodeResponseDto()
+                        return new ApiResponse()
                         {
-                            IsSuccess = true,
+                            Action = true,
                             Message = "CodeIsCorrect",
-                            RefreshToken = _tokenService.CreateRefreshToken(userEntity),
-                            AccessToken = _tokenService.CreateToken(userEntity),
-                            TypeOfUser = userEntity.TypeOfUser
+                            Result = new CheckCodeResponseDto()
+                            {
+                              
+                                RefreshToken = userEntity.RefreshToken,
+                                AccessToken = _tokenService.CreateToken(userEntity),
+                                TypeOfUser = userEntity.TypeOfUser.ToString()
+                            }
                         };
                     }
                     else
@@ -117,13 +126,16 @@ public class UserRepository : IUserRepository
                         var result2 = await _context.SaveChangesAsync();
                         
 
-                        return new CheckCodeResponseDto()
+                        return new ApiResponse()
                         {
-                            IsSuccess = true,
+                            Action = true,
                             Message = "CodeIsCorrect",
-                            RefreshToken = newUser.RefreshToken,
-                            AccessToken = _tokenService.CreateToken(newUser),
-                            TypeOfUser = newUser.TypeOfUser
+                            Result = new CheckCodeResponseDto()
+                            {
+                                RefreshToken = newUser.RefreshToken,
+                                AccessToken = _tokenService.CreateToken(newUser),
+                                TypeOfUser = newUser.TypeOfUser.ToString()
+                            }
                         };
                     }
 
@@ -131,22 +143,22 @@ public class UserRepository : IUserRepository
                 }
             }
 
-            return new CheckCodeResponseDto()
+            return new ApiResponse()
             {
-                IsSuccess = false,
-                Message = "Code Is Not Correct"
+                Action = false,
+                Message = "CodeIsNotCorrect"
             };
         }
 
-        return new CheckCodeResponseDto()
+        return new ApiResponse()
         {
-            IsSuccess = false,
-            Message = "User not found"
+            Action = false,
+            Message = "CodeIsNotCorrect"
         };
     }
 
 
-    public async Task<string> Login(string UserPhoneNumber)
+    public async Task<ApiResponse> Login(string UserPhoneNumber)
     {
         var user = await _context.CodeVerifies.FirstOrDefaultAsync(x => x.PhoneNumber == UserPhoneNumber);
         if (user is null)
@@ -160,7 +172,10 @@ public class UserRepository : IUserRepository
             await _context.SaveChangesAsync();
 
 
-            return "CodeIsSuccessFullySend";
+            return new ApiResponse(){
+                Action = true,
+                Message = "CodeIsSuccessFullySend"
+            };
         }
         else
         {
@@ -175,22 +190,28 @@ public class UserRepository : IUserRepository
                     TimeCodeSend = DateTime.Now
                 });
                 await _context.SaveChangesAsync();
-                return "CodeIsSuccessFullySend";
+                return new ApiResponse(){
+                    Action = true,
+                    Message = "CodeIsSuccessFullySend"
+                };
             }
             else
             {
-                return "you should wait 2 minutes";
+                return new ApiResponse(){
+                    Action = false,
+                    Message = "you should wait 2 minutes"
+                };
 
             }
         }
     }
 
-    public async Task<string> GenerateAccessToken(string refreshToken)
+    public async Task<ApiResponse> GenerateAccessToken(string refreshToken)
     {
        var user = await _context.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
-        if (user is null) return "User not found";
-        if (user.RefreshTokeNExpire < DateTime.Now) return "Refresh token expired";
-        return _tokenService.CreateToken(user);
+        if (user is null) return new ApiResponse() { Message = "Invalid refresh token", Action = false };
+        if (user.RefreshTokeNExpire < DateTime.Now) return new ApiResponse() { Message = "Refresh token expired", Action = false };
+        return new ApiResponse() { Message = "Success", Action = true, Result = new { AccessToken = _tokenService.CreateToken(user) } };
     }
 
 }

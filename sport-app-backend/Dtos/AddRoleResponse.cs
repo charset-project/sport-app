@@ -7,6 +7,7 @@ public class AddRoleResponse
    
     public string? RefreshToken { get; set; }
     public string? AccessToken { get; set; }
-    public TypeOfUser TypeOfUser { get; set; }
-    public string? Message { get; set; }
+
+    public required string TypeOfUser { get; set; }
+    
 }

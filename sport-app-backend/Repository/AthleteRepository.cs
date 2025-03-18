@@ -23,12 +23,12 @@ namespace sport_app_backend.Repository
             _userManager = context.Users;
         }
 
-        public async Task<bool> AddWaterIntake(string phoneNumber, WaterInTakeDto waterInTakeDto)
+        public async Task<ApiResponse> AddWaterIntake(string phoneNumber, WaterInTakeDto waterInTakeDto)
         {
             var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            if (user is null) return false;
+            if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
             var athlete = user.Athlete;
-            if (athlete is null) return false;
+            if (athlete is null) return new ApiResponse() { Message = "User is not an athlete", Action = false };// Ensure the user is an athlete
             var waterIntake = new WaterInTake
             {
                 AthleteId = athlete.Id,
@@ -54,15 +54,17 @@ namespace sport_app_backend.Repository
                 _context.WaterInTakes.Add(waterIntake);
             }
             await _context.SaveChangesAsync();
-            return true;
+            return new ApiResponse(){
+                Message = "WaterIntake added successfully",
+                Action = true};
         }
 
-        public async Task<bool> SubmitAthleteQuestions(string phoneNumber, AthleteQuestionDto AthleteQuestionDto)
+        public async Task<ApiResponse> SubmitAthleteQuestions(string phoneNumber, AthleteQuestionDto AthleteQuestionDto)
         {
             var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            if (user is null) return false;
+            if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
             var athlete = user.Athlete;
-            if (athlete is null) return false;
+            if (athlete is null) return new ApiResponse() { Message = "User is not an athlete", Action = false };// Ensure the user is an athlete
             user.Gender = AthleteQuestionDto.Gender;
             athlete.Height = AthleteQuestionDto.Height;
             athlete.CurrentWeight = AthleteQuestionDto.CurrentWeight;
@@ -85,16 +87,20 @@ namespace sport_app_backend.Repository
             _context.AthleteQuestions.Add(athleteQuestion);
 
             await _context.SaveChangesAsync();
-            return true;
+            return new ApiResponse()
+            {
+                Message = "Athlete questions submitted successfully",
+                Action = true
+            };
 
         }
 
-        public async Task<bool> UpdateWaterInDay(string phoneNumber)
+        public async Task<ApiResponse> UpdateWaterInDay(string phoneNumber)
         {
             var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            if (user is null) return false;
+            if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
             var athlete = user.Athlete;
-            if (athlete is null) return false;
+            if (athlete is null) return new ApiResponse(){Message="User is not athlete",Action = false};
             var WaterInDay = await _context.WaterInDays
                 .Where(w => w.AthleteId == athlete.Id && w.Date.Date == DateTime.Now.Date)
                 .FirstOrDefaultAsync();
@@ -110,14 +116,14 @@ namespace sport_app_backend.Repository
                 athlete.WaterInDays.Add(waterInDay); // Add the new WaterInDay to the athlete's collection
                 await _context.WaterInDays.AddAsync(waterInDay);
                 await _context.SaveChangesAsync();
-                return true;
+                return new ApiResponse(){Message="WaterInDay added successfully",Action = true};
             }
             else
             {
                 WaterInDay.NumberOfCupsDrinked += 1;
                 _context.WaterInDays.Update(WaterInDay);
                 await _context.SaveChangesAsync();
-                return true;
+                return new ApiResponse(){Message="WaterInDay updated successfully",Action = true};
             }
         }
     }
