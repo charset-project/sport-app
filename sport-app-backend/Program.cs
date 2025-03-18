@@ -100,6 +100,7 @@ builder.Services.AddScoped<ISendVerifyCodeService, SendVerifyCodeService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICoachRepository, CoachRepository>();
 builder.Services.AddScoped<IAthleteRepository, AthleteRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

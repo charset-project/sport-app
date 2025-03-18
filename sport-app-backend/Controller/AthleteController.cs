@@ -10,9 +10,9 @@ using sport_app_backend.Interface;
 
 namespace sport_app_backend.Controller
 {
-     [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AthleteController: ControllerBase
+    public class AthleteController : ControllerBase
     {
         private readonly IAthleteRepository _athleteRepository;
 
@@ -21,7 +21,7 @@ namespace sport_app_backend.Controller
             _athleteRepository = athleteRepository;
         }
         [HttpPost("add athlete question")]
-        [Authorize(Roles="Athlete")]
+        [Authorize(Roles = "Athlete")]
 
         public async Task<IActionResult> AddAthleteQuestion([FromBody] AthleteQuestionDto athleteQuestionDto)
         {
@@ -31,7 +31,7 @@ namespace sport_app_backend.Controller
             var result = await _athleteRepository.SubmitAthleteQuestions(phoneNumber, athleteQuestionDto);
             if (!result) return BadRequest("Failed to add athlete question");
             return Ok(new { Message = "Athlete question added successfully" });
-    
-    }
+
+        }
     }
 }
