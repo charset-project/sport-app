@@ -51,9 +51,9 @@ public class TokenService: ITokenService
 
         var userRoles = user.TypeOfUser switch
         {
-            TypeOfUser.Coach => new[] { "Coach" },
-            TypeOfUser.Athlete => new[] { "Athlete" },
-            TypeOfUser.None => new[] { "None" },
+            TypeOfUser.COACH => new[] { "Coach" },
+            TypeOfUser.ATHLETE => new[] { "Athlete" },
+            TypeOfUser.NONE => new[] { "None" },
         };
         
         

@@ -6,6 +6,7 @@ using sport_app_backend.Data;
 using sport_app_backend.Dtos;
 using sport_app_backend.Interface;
 using sport_app_backend.Mappers;
+using sport_app_backend.Models;
 using sport_app_backend.Models.Actions;
 
 namespace sport_app_backend.Repository
@@ -19,13 +20,16 @@ namespace sport_app_backend.Repository
             _context = context;
         }
 
-        public Task<bool> AddExercises(List<AddExercisesRequestDto> exercises)
+        public Task<ApiResponse> AddExercises(List<AddExercisesRequestDto> exercises)
         {
             var exercisesList = exercises.Select(x => x.ToExercisesDto()).ToList();
             _context.Exercises.AddRange(exercisesList);
             _context.SaveChanges();
-            return Task.FromResult(true);
-            
+            return Task.FromResult(new ApiResponse()
+            {
+                Message = "Exercises added successfully",
+                Action = true
+            });
 
       
         }

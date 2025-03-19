@@ -29,13 +29,13 @@ public class UserRepository : IUserRepository
         if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
         if (role.Equals("Coach"))
         {
-            user.TypeOfUser = TypeOfUser.Coach;
+            user.TypeOfUser = TypeOfUser.COACH;
             var coach = new Coach(){
                 User = user,
                 UserId = user.Id
             };
             user.Coach = coach;
-            user.TypeOfUser = TypeOfUser.Coach;
+            user.TypeOfUser = TypeOfUser.COACH;
             await _context.Coaches.AddAsync(user.Coach);
             await _context.SaveChangesAsync();
             return new ApiResponse(){
@@ -51,13 +51,13 @@ public class UserRepository : IUserRepository
         }
         else if (role.Equals("Athlete"))
         {
-            user.TypeOfUser = TypeOfUser.Athlete;
+            user.TypeOfUser = TypeOfUser.ATHLETE;
             user.Athlete = new Athlete
             {
                 User = user,
                 UserId = user.Id
             };
-            user.TypeOfUser = TypeOfUser.Athlete;
+            user.TypeOfUser = TypeOfUser.ATHLETE;
             await _context.Athletes.AddAsync(user.Athlete);
             await _context.SaveChangesAsync();
             return new ApiResponse(){
@@ -118,7 +118,7 @@ public class UserRepository : IUserRepository
                         var newUser = new User()
                         {
                             PhoneNumber = checkCodeRequestDto.PhoneNumber,
-                            TypeOfUser = TypeOfUser.None,
+                            TypeOfUser = TypeOfUser.NONE,
                         };
                         newUser.LastLogin = DateTime.Now;
                         _tokenService.CreateRefreshToken(newUser);

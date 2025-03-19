@@ -27,7 +27,7 @@ namespace sport_app_backend.Controller
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
 
             var result = await _coachRepository.SubmitCoachQuestions(phoneNumber, coachQuestionDto);
-            if (!result) return BadRequest("Failed to submit coach questions.");
+            if (!result.Action) return BadRequest("Failed to submit coach questions.");
 
             return Ok(new { Message = "Coach questions submitted successfully" });
         }
