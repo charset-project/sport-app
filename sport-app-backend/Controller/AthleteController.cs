@@ -9,7 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using sport_app_backend.Data;
 using sport_app_backend.Dtos;
 using sport_app_backend.Interface;
+using sport_app_backend.Mappers;
 using sport_app_backend.Models;
+using sport_app_backend.Models.Account;
 
 namespace sport_app_backend.Controller
 {
@@ -123,6 +125,38 @@ namespace sport_app_backend.Controller
                 })
             });
 
+        }
+
+        [HttpGet("get_Athlete_profile")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> GetAthleteProfile()
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest(new ApiResponse() { Action = false, Message = "PhoneNumber is null" });
+            var user = await _context.Users
+                .Include(u => u.Athlete).FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
+            if (user is null) return BadRequest(new ApiResponse() { Action = false, Message = "User not found" });
+
+            return Ok(new ApiResponse() { Action = true, Message = "User found", Result = user.ToAthleteProfileResponseDto() });
+
+        }
+
+        [HttpGet("search_Coaches")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> SearchCoaches([FromBody] string FullName)
+        {
+           var resualt = await _context.Users.Where(c => (c.FirstName+" "+c.LastName).Contains(FullName)&& 
+           c.TypeOfUser == TypeOfUser.COACH).ToListAsync();
+            return Ok(new ApiResponse() { Action = true, Message = "Coaches found", Result = resualt.Select(c => c.ToCoachForSearch()).ToList() });
+
+           
+        }
+        [HttpGet("Get-Coaches")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> GetCoaches()
+        {
+            var resualt = await _context.Users.Where(c => c.TypeOfUser == TypeOfUser.COACH).ToListAsync();
+            return Ok(new ApiResponse() { Action = true, Message = "Coaches found", Result = resualt.Select(c => c.ToCoachForSearch()).ToList() });
         }
 
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sport-app-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80a38d0e35bd5bbde52506fd1bb7b42eba34ff07")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dee333c036599775ab457127930ea02c99ba65a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("sport-app-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sport-app-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
