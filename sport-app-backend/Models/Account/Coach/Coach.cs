@@ -21,9 +21,9 @@ public class Coach
 
     public int StartCoachingYear { get; set; }
 
-    public List<Coachplan>? Coachplans { get; set; }
-    public List<Payment>? Payments { get; set; }
-    public List<WorkoutProgram>? WorkoutPrograms { get; set; }
+    public List<CoachPlan> Coachplans { get; set; }=[];
+    public List<Payment>? Payments { get; set; }=[];
+    public List<WorkoutProgram> WorkoutPrograms { get; set; }=[];
     public CoachQuestion? CoachQuestion { get; set; }
 
 

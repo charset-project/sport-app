@@ -51,6 +51,49 @@ namespace sport_app_backend.Controller
             return Ok(new ApiResponse { Action = true, Message = "Coach found", Result = user.ToCoachProfileResponseDto() });
         }
 
-        
+        [HttpPost("add_coaching_plane")]
+        [Authorize(Roles = "Coach")]
+        public async Task<IActionResult> AddCoachingPlane(AddCoachingPlaneDto coachingPlaneDto)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest(new ApiResponse { Action = false, Message = "PhoneNumber is null" });
+            var result = await _coachRepository.AddCoachingPlane(phoneNumber, coachingPlaneDto);
+
+            if (result.Action) return Ok(result);
+            else return BadRequest(result);
+        }
+
+        ///edit coaching plane
+        [HttpPut("edit_coaching_plane")]
+        [Authorize(Roles = "Coach")]
+        public async Task<IActionResult> EditCoachingPlane(AddCoachingPlaneDto coachingPlaneDto)
+        {
+            // var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            // if (phoneNumber is null) return BadRequest(new ApiResponse { Action = false, Message = "PhoneNumber is null" });
+            // var result = await _coachRepository.EditCoachingPlane(phoneNumber, coachingPlaneDto);
+            // if (result.Action) return Ok(result);
+            // else return BadRequest(result);
+            return Ok("method not implemented");
+        }
+
+        /// get coaching plane
+        [HttpGet("get_coaching_plane")]
+        [Authorize(Roles = "Coach")]
+        public async Task<IActionResult> GetCoachingPlane()
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest(new ApiResponse { Action = false, Message = "PhoneNumber is null" });
+            var user =await  _context.Users.Include(x => x.Coach).Include(c => c.Coach.Coachplans).FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+            var coachingPlane = user.Coach.Coachplans;
+
+            if (coachingPlane == null) return NotFound(new ApiResponse { Action = false, Message = "Coaching plane not found" });
+            var coachingPlaneDto = coachingPlane.Select(x => x.ToCoachingPlanResponse()).ToList();
+            
+            return Ok(new ApiResponse { Action = true, Message = "Coaching plane found", Result = coachingPlaneDto });
+
+
+        }
+
+
     }
 }

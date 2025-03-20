@@ -6,5 +6,8 @@ namespace sport_app_backend.Interface
     public interface ICoachRepository
     {
         Task<ApiResponse> SubmitCoachQuestions(string phoneNumber, CoachQuestionDto coachQuestionDto);
+        Task<ApiResponse> AddCoachingPlane(string phoneNumber, AddCoachingPlaneDto addCoachingPlaneDto);
+        Task<ApiResponse> UpdateCoachingPlane(string phoneNumber, AddCoachingPlaneDto addCoachingPlaneDto);
+        
     }
 }

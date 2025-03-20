@@ -4,7 +4,7 @@ using sport_app_backend.Models.TrainingPlan;
 
 namespace sport_app_backend.Models.Account;
 
-public class Coachplan
+public class CoachPlan
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,6 +21,6 @@ public class Coachplan
     public required int DurationByDay { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedDate { get; set; }
-    public TypeOfCoachingPlan TypeOfCoachingPlan { get; set; } 
-    
+    public TypeOfCoachingPlan TypeOfCoachingPlan { get; set; }
+
 }
