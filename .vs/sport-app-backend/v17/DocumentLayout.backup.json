@@ -1,34 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\",
+  "WorkspaceRootPath": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\dtos\\checkcoderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\dtos\\checkcoderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\dtos\\checkcoderesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\dtos\\checkcoderesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\controller\\coachecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\controller\\coachecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\interface\\icoachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\repository\\coachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\repository\\coachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\interface\\icoachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\interface\\icoachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|e:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\project\\sport-app\\sport-app-backend\\repository\\coachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\repository\\coachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\dtos\\checkcoderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\dtos\\checkcoderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|c:\\users\\dour-andish\\desktop\\git\\sport-app\\sport-app-backend\\dtos\\checkcoderesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E78A143-5B3A-4A8B-974B-AA31CDEB5FC6}|sport-app-backend\\sport-app-backend.csproj|solutionrelative:sport-app-backend\\dtos\\checkcoderesponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,51 +69,105 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CheckCodeResponseDto.cs",
-              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
-              "RelativeDocumentMoniker": "sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
-              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
-              "RelativeToolTip": "sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T18:48:14.209Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CheckCodeRequestDto.cs",
-              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
-              "RelativeDocumentMoniker": "sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
-              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
-              "RelativeToolTip": "sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T18:48:11.401Z",
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Dockerfile",
+              "RelativeDocumentMoniker": "sport-app-backend\\Dockerfile",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Dockerfile",
+              "RelativeToolTip": "sport-app-backend\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-23T20:20:45.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "sport-app-backend\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\appsettings.Development.json",
+              "RelativeToolTip": "sport-app-backend\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-23T20:19:54.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\appsettings.json",
+              "RelativeDocumentMoniker": "sport-app-backend\\appsettings.json",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\appsettings.json",
+              "RelativeToolTip": "sport-app-backend\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-23T20:18:40.25Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "sport-app-backend\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Properties\\launchSettings.json",
+              "RelativeToolTip": "sport-app-backend\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAABMAAACPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-23T20:17:00.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CheckCodeResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "RelativeDocumentMoniker": "sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "RelativeToolTip": "sport-app-backend\\Dtos\\CheckCodeResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T18:48:14.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CheckCodeRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "RelativeDocumentMoniker": "sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "RelativeToolTip": "sport-app-backend\\Dtos\\CheckCodeRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T18:48:11.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Program.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Program.cs",
-              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Program.cs",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Program.cs",
               "RelativeToolTip": "sport-app-backend\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAAAIEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T18:12:21.957Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "CoachRepository.cs",
-              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Repository\\CoachRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Repository\\CoachRepository.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Repository\\CoachRepository.cs",
-              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Repository\\CoachRepository.cs",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Repository\\CoachRepository.cs",
               "RelativeToolTip": "sport-app-backend\\Repository\\CoachRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -110,39 +176,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ICoachRepository.cs",
-              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Interface\\ICoachRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Interface\\ICoachRepository.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Interface\\ICoachRepository.cs",
-              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Interface\\ICoachRepository.cs",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Interface\\ICoachRepository.cs",
               "RelativeToolTip": "sport-app-backend\\Interface\\ICoachRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T18:05:54.516Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CoacheController.cs",
-              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Controller\\CoacheController.cs",
-              "RelativeDocumentMoniker": "sport-app-backend\\Controller\\CoacheController.cs",
-              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Controller\\CoacheController.cs",
-              "RelativeToolTip": "sport-app-backend\\Controller\\CoacheController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T13:49:50.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "UserController.cs",
-              "DocumentMoniker": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Controller\\UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Controller\\UserController.cs",
               "RelativeDocumentMoniker": "sport-app-backend\\Controller\\UserController.cs",
-              "ToolTip": "E:\\university\\\u062A\u0631\u0645 6\\\u0645\u0648 \u0646\u0631\u0645\\Project\\sport-app\\sport-app-backend\\Controller\\UserController.cs",
+              "ToolTip": "C:\\Users\\Dour-Andish\\Desktop\\git\\sport-app\\sport-app-backend\\Controller\\UserController.cs",
               "RelativeToolTip": "sport-app-backend\\Controller\\UserController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAAABkAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T07:36:05.259Z",
               "EditorCaption": ""

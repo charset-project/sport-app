@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["sport-app-backend.csproj", "./"]
+RUN dotnet restore "./sport-app-backend.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "sport-app-backend.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "sport-app-backend.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENV ConnectionString__DefaultConnection="Server=charset.charset.svc;Port=3306;Database=hamravesh-c13;User Id=root;Password=cGYrttE9Xc4ugDh0Lados2u2EGpxneag;"
+ENTRYPOINT ["dotnet", "sport-app-backend.dll"]
