@@ -13,8 +13,8 @@ namespace sport_app_backend.Dtos
     public required string PhoneNumber { get; set; }
     public int Id { get; set; }
     public int Height { get; set; }
-    public int CurrentWeight { get; set; }
-    public int WeightGoal { get; set; }
+    public double CurrentWeight { get; set; }
+    public double WeightGoal { get; set; }
     public List<string> InjuryArea { get; set; } = [];
     public string? FitnessLevel { get; set; }
     public int CurrentBodyForm { get; set; }

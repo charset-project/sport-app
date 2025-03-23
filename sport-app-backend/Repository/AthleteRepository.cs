@@ -12,22 +12,16 @@ using sport_app_backend.Models.Account;
 using sport_app_backend.Models.Question.A_Question;
 
 namespace sport_app_backend.Repository
+
 {
-    public class AthleteRepository : IAthleteRepository
+    public class AthleteRepository(ApplicationDbContext context) : IAthleteRepository
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<User> _userManager;
-        public AthleteRepository(ApplicationDbContext context)
-        {
-            _context = context;
-            _userManager = context.Users;
-        }
+        private readonly ApplicationDbContext _context = context;
+        private readonly DbSet<User> _userManager = context.Users;
 
         public async Task<ApiResponse> AddWaterIntake(string phoneNumber, WaterInTakeDto waterInTakeDto)
         {
-            var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
-            var athlete = user.Athlete;
+            var athlete = await _context.Athletes.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
             if (athlete is null) return new ApiResponse() { Message = "User is not an athlete", Action = false };// Ensure the user is an athlete
             var waterIntake = new WaterInTake
             {
@@ -54,18 +48,19 @@ namespace sport_app_backend.Repository
                 _context.WaterInTakes.Add(waterIntake);
             }
             await _context.SaveChangesAsync();
-            return new ApiResponse(){
+            return new ApiResponse()
+            {
                 Message = "WaterIntake added successfully",
-                Action = true};
+                Action = true
+            };
         }
 
         public async Task<ApiResponse> SubmitAthleteQuestions(string phoneNumber, AthleteQuestionDto AthleteQuestionDto)
         {
-            var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
-            var athlete = user.Athlete;
+            var athlete = await _context.Athletes.Include(x => x.User).FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
             if (athlete is null) return new ApiResponse() { Message = "User is not an athlete", Action = false };// Ensure the user is an athlete
-            user.Gender = AthleteQuestionDto.Gender;
+            if (athlete.User is null) return new ApiResponse() { Message = "User not found", Action = false };
+            athlete.User.Gender = AthleteQuestionDto.Gender;
             athlete.Height = AthleteQuestionDto.Height;
             athlete.CurrentWeight = AthleteQuestionDto.CurrentWeight;
             athlete.WeightGoal = AthleteQuestionDto.TargetWeight;
@@ -97,10 +92,8 @@ namespace sport_app_backend.Repository
 
         public async Task<ApiResponse> UpdateWaterInDay(string phoneNumber)
         {
-            var user = await _userManager.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            if (user is null) return new ApiResponse() { Message = "User not found", Action = false };
-            var athlete = user.Athlete;
-            if (athlete is null) return new ApiResponse(){Message="User is not athlete",Action = false};
+            var athlete = _context.Athletes.FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+            if (athlete is null) return new ApiResponse() { Message = "User is not athlete", Action = false };
             var WaterInDay = await _context.WaterInDays
                 .Where(w => w.AthleteId == athlete.Id && w.Date.Date == DateTime.Now.Date)
                 .FirstOrDefaultAsync();
@@ -116,15 +109,66 @@ namespace sport_app_backend.Repository
                 athlete.WaterInDays.Add(waterInDay); // Add the new WaterInDay to the athlete's collection
                 await _context.WaterInDays.AddAsync(waterInDay);
                 await _context.SaveChangesAsync();
-                return new ApiResponse(){Message="WaterInDay added successfully",Action = true};
+                return new ApiResponse() { Message = "WaterInDay added successfully", Action = true };
             }
             else
             {
                 WaterInDay.NumberOfCupsDrinked += 1;
                 _context.WaterInDays.Update(WaterInDay);
                 await _context.SaveChangesAsync();
-                return new ApiResponse(){Message="WaterInDay updated successfully",Action = true};
+                return new ApiResponse() { Message = "WaterInDay updated successfully", Action = true };
             }
         }
+
+        public async Task<ApiResponse> UpdateWeight(string phoneNumber, double weight)
+        {
+
+            var athlete = _context.Athletes.FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+            if (athlete is null) return new ApiResponse() { Message = "User is not an athlete", Action = false };// Ensure the user is an athlete
+            athlete.CurrentWeight = weight;
+            var weightEntry = _context.WeightEntries.FirstOrDefault(x => x.AthleteId == athlete.Id && x.CurrentDate.Date == DateTime.Now.Date);
+            if (weightEntry is null)
+            {
+                weightEntry = new WeightEntry()
+                {
+                    AthleteId = athlete.Id,
+                    Athlete = athlete,
+                    CurrentDate = DateTime.Now,
+                    Weight = weight
+                };
+                await _context.WeightEntries.AddAsync(weightEntry);
+                athlete.WeightEntries.Add(weightEntry);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                weightEntry.Weight = weight;
+                weightEntry.CurrentDate = DateTime.Now;
+                await _context.SaveChangesAsync();
+
+            }
+            return new ApiResponse()
+            {
+                Message = "Weight updated successfully",
+                Action = true
+            };
+        }
+        //report last 30 days
+        public Task<ApiResponse> WeightReport(string phoneNumber)
+        {
+            var athlete = _context.Athletes.FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+            if (athlete is null) return Task.FromResult(new ApiResponse() { Message = "User is not an athlete", Action = false });// Ensure the user is an athlete
+            var weightEntries = _context.WeightEntries.Where(x => x.AthleteId == athlete.Id && x.CurrentDate >= DateTime.Now.AddDays(-30)).OrderByDescending(x => x.CurrentDate).ToList();
+
+            return Task.FromResult(new ApiResponse()
+            {
+                Message = "Weight report fetched successfully",
+                Action = true,
+                Result = weightEntries.Select(x => new { Date = x.CurrentDate.ToString("yyyy-MM-dd"), x.Weight }).ToList()
+            });
+        }
+
+        ///
+        
     }
 }

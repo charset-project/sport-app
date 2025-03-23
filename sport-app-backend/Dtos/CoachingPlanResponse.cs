@@ -15,7 +15,7 @@ namespace sport_app_backend.Dtos
         public required int DurationByDay { get; set; }
         public bool IsActive { get; set; }
 
-        public string TypeOfCoachingPlan { get; set; }
+        public string TypeOfCoachingPlan { get; set; }=string.Empty;
 
     }
 }

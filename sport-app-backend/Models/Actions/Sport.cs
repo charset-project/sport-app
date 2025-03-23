@@ -10,7 +10,7 @@ public class Sport
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     public SportEnum sportEnum;
-    public int ColoriesLost { get; set; }
+    public int CaloriesLost { get; set; }
     public int Duration { get; set; }
     public DateTime DateTime{ get; set; }
     public int AthleteId { get; set; }

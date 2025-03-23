@@ -81,10 +81,12 @@ namespace sport_app_backend.Controller
         [Authorize(Roles = "Coach")]
         public async Task<IActionResult> GetCoachingPlane()
         {
+          
             var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
             if (phoneNumber is null) return BadRequest(new ApiResponse { Action = false, Message = "PhoneNumber is null" });
-            var user =await  _context.Users.Include(x => x.Coach).Include(c => c.Coach.Coachplans).FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-            var coachingPlane = user.Coach.Coachplans;
+            var coach = await _context.Coaches.Include(c => c.Coachplans).FirstOrDefaultAsync(c => c.PhoneNumber == phoneNumber);
+            if (coach == null) return NotFound(new ApiResponse { Action = false, Message = "Coach not found" });
+            var coachingPlane = coach.Coachplans;
 
             if (coachingPlane == null) return NotFound(new ApiResponse { Action = false, Message = "Coaching plane not found" });
             var coachingPlaneDto = coachingPlane.Select(x => x.ToCoachingPlanResponse()).ToList();

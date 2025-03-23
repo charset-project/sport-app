@@ -60,11 +60,9 @@ namespace sport_app_backend.Controller
         {
             var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
-            var user = await _context.Users
-                .Include(u => u.Athlete)
-                .ThenInclude(a => a.WaterInTake)
+            var athlete = await _context.Athletes.Include(a => a.WaterInTake)
                 .FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
-            if (user is null || user.Athlete == null || user.Athlete.WaterInTake == null)
+            if (athlete == null || athlete.WaterInTake == null)
             {
                 return NotFound("Water intake not found");
             }
@@ -76,8 +74,8 @@ namespace sport_app_backend.Controller
                     Message = "Water intake found",
                     Result = new WaterInTakeDto()
                     {
-                        DailyCupOfWater = user.Athlete.WaterInTake.DailyCupOfWater,
-                        Reminder = user.Athlete.WaterInTake.Reminder
+                        DailyCupOfWater = athlete.WaterInTake.DailyCupOfWater,
+                        Reminder = athlete.WaterInTake.Reminder
                     }
                 });
             }
@@ -159,6 +157,35 @@ namespace sport_app_backend.Controller
             return Ok(new ApiResponse() { Action = true, Message = "Coaches found", Result = resualt.Select(c => c.ToCoachForSearch()).ToList() });
         }
 
+
+        [HttpGet("get_coach_profile/{coachId}")]//need to make it with id
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> GetCoachProfile([FromRoute]int coachId)
+        {
+            var coach = await _context.Coaches.Include(c =>c.Coachplans).FirstOrDefaultAsync(c => c.Id == coachId);
+            if (coach == null) return BadRequest(new ApiResponse() { Action = false, Message = "Coach not found" });
+
+            return Ok(new ApiResponse() { Action = true, Message = "Coach found", Result = coach.ToCoachProfileForAthleteDto() });
+        }
+        [HttpPut("update_weight")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> UpdateWeight(int weight){
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest("PhoneNumber is null");
+            var result = await _athleteRepository.UpdateWeight(phoneNumber, weight);
+            if (!result.Action) return BadRequest(result);
+            return Ok(result);
+        }
+
+        [HttpGet("get_weight_report")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> GetWeightReport(){
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest("PhoneNumber is null");
+            var result = await _athleteRepository.WeightReport(phoneNumber);
+            if (!result.Action) return BadRequest(result);
+            return Ok(result);
+        }
 
     }
 

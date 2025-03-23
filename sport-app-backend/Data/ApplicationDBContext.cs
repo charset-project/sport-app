@@ -40,6 +40,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<CodeVerify> CodeVerifies { get; set; }
     public DbSet<CoachQuestion> CoachQuestions { get; set; }
     public DbSet<AthleteQuestion> AthleteQuestions { get; set; }
+    public DbSet<WeightEntry> WeightEntries { get; set; }
     public DbSet<WaterInTake> WaterInTakes { get; set; }
     public DbSet<WaterInDay> WaterInDays { get; set; }
     public DbSet<CoachPlan> CoachesPlan { get; set; }

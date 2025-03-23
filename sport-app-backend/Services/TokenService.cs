@@ -54,6 +54,8 @@ public class TokenService: ITokenService
             TypeOfUser.COACH => new[] { "Coach" },
             TypeOfUser.ATHLETE => new[] { "Athlete" },
             TypeOfUser.NONE => new[] { "None" },
+            TypeOfUser.ADMIN => throw new NotImplementedException(),
+            _ => throw new NotImplementedException(),
         };
         
         

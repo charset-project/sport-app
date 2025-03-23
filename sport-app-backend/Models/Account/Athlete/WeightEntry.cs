@@ -6,11 +6,13 @@ public class WeightEntry
 {
     [Key]
     public int Id { get; set; }
-    public int AthleteId { get; set; }
+    public required int AthleteId { get; set; }
+    public required Athlete Athlete {get; set;}
     [Required]
     [Range(1, 300)]
-    public int Weight { get; set; }
+    public double Weight { get; set; }
     [Required]
-    public DateTime EntryDate { get; set; }
+    [DataType(DataType.Date)]
+    public DateTime CurrentDate { get; set; }
 
 }

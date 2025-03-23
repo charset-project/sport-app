@@ -30,22 +30,26 @@ public class UserRepository : IUserRepository
         if (role.Equals("Coach"))
         {
             user.TypeOfUser = TypeOfUser.COACH;
-            var coach = new Coach(){
+            var coach = new Coach()
+            {
                 User = user,
-                UserId = user.Id
+                UserId = user.Id,
+                PhoneNumber = user.PhoneNumber
             };
             user.Coach = coach;
             user.TypeOfUser = TypeOfUser.COACH;
             await _context.Coaches.AddAsync(user.Coach);
             await _context.SaveChangesAsync();
-            return new ApiResponse(){
+            return new ApiResponse()
+            {
                 Message = "Coach added successfully",
-               Action = true,
-               Result = new AddRoleResponse(){ 
-                   RefreshToken = user.RefreshToken, 
-                   AccessToken = _tokenService.CreateToken(user),
-                     TypeOfUser = user.TypeOfUser.ToString()
-               }
+                Action = true,
+                Result = new AddRoleResponse()
+                {
+                    RefreshToken = user.RefreshToken,
+                    AccessToken = _tokenService.CreateToken(user),
+                    TypeOfUser = user.TypeOfUser.ToString()
+                }
             };
 
         }
@@ -55,19 +59,22 @@ public class UserRepository : IUserRepository
             user.Athlete = new Athlete
             {
                 User = user,
-                UserId = user.Id
+                UserId = user.Id,
+                PhoneNumber = user.PhoneNumber
             };
             user.TypeOfUser = TypeOfUser.ATHLETE;
             await _context.Athletes.AddAsync(user.Athlete);
             await _context.SaveChangesAsync();
-            return new ApiResponse(){
+            return new ApiResponse()
+            {
                 Message = "Athlete added successfully",
-               Action = true,
-               Result = new AddRoleResponse(){ 
-                   RefreshToken = user.RefreshToken, 
-                   AccessToken = _tokenService.CreateToken(user),
-                     TypeOfUser = user.TypeOfUser.ToString()
-               }
+                Action = true,
+                Result = new AddRoleResponse()
+                {
+                    RefreshToken = user.RefreshToken,
+                    AccessToken = _tokenService.CreateToken(user),
+                    TypeOfUser = user.TypeOfUser.ToString()
+                }
             };
         }
         else
@@ -106,7 +113,7 @@ public class UserRepository : IUserRepository
                             Message = "CodeIsCorrect",
                             Result = new CheckCodeResponseDto()
                             {
-                              
+
                                 RefreshToken = userEntity.RefreshToken,
                                 AccessToken = _tokenService.CreateToken(userEntity),
                                 TypeOfUser = userEntity.TypeOfUser.ToString()
@@ -124,7 +131,7 @@ public class UserRepository : IUserRepository
                         _tokenService.CreateRefreshToken(newUser);
                         var result = await _context.Users.AddAsync(newUser);
                         var result2 = await _context.SaveChangesAsync();
-                        
+
 
                         return new ApiResponse()
                         {
@@ -172,7 +179,8 @@ public class UserRepository : IUserRepository
             await _context.SaveChangesAsync();
 
 
-            return new ApiResponse(){
+            return new ApiResponse()
+            {
                 Action = true,
                 Message = "CodeIsSuccessFullySend"
             };
@@ -190,14 +198,16 @@ public class UserRepository : IUserRepository
                     TimeCodeSend = DateTime.Now
                 });
                 await _context.SaveChangesAsync();
-                return new ApiResponse(){
+                return new ApiResponse()
+                {
                     Action = true,
                     Message = "CodeIsSuccessFullySend"
                 };
             }
             else
             {
-                return new ApiResponse(){
+                return new ApiResponse()
+                {
                     Action = false,
                     Message = "you should wait 2 minutes"
                 };
@@ -208,7 +218,7 @@ public class UserRepository : IUserRepository
 
     public async Task<ApiResponse> GenerateAccessToken(string refreshToken)
     {
-       var user = await _context.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
         if (user is null) return new ApiResponse() { Message = "Invalid refresh token", Action = false };
         if (user.RefreshTokeNExpire < DateTime.Now) return new ApiResponse() { Message = "Refresh token expired", Action = false };
         return new ApiResponse() { Message = "Success", Action = true, Result = new { AccessToken = _tokenService.CreateToken(user) } };

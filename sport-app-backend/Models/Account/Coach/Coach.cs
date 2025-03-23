@@ -13,17 +13,19 @@ public class Coach
     public int Id { get; set; }
     public int UserId { get; set; }
     public User? User { get; set; }
+    public required string PhoneNumber { get; set; }
+
     [EmailAddress]
     [StringLength(50)]
     public string Email { get; set; } = "";
-  
+
     public List<CoachingDomain>? Domain { get; set; }
 
     public int StartCoachingYear { get; set; }
 
-    public List<CoachPlan> Coachplans { get; set; }=[];
-    public List<Payment>? Payments { get; set; }=[];
-    public List<WorkoutProgram> WorkoutPrograms { get; set; }=[];
+    public List<CoachPlan> Coachplans { get; set; } = [];
+    public List<Payment>? Payments { get; set; } = [];
+    public List<WorkoutProgram> WorkoutPrograms { get; set; } = [];
     public CoachQuestion? CoachQuestion { get; set; }
 
 

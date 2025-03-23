@@ -30,6 +30,6 @@ namespace sport_app_backend.Mappers
                 ImageProfile = user.ImageProfile ?? Array.Empty<byte>(),
                 Bio = user.Bio ?? string.Empty};
                 }
-        
+       
     }
 }
