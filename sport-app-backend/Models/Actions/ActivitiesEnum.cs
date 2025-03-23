@@ -1,16 +1,16 @@
 namespace sport_app_backend.Models.Actions;
 
-public enum SportEnum
-{  Running,
-    Walking,
-    Cycling,
-    Swimming,
-    Basketball,
-    Soccer,
-    Tennis,
-    Badminton,
-    Dancing,
-    Volleyball
+public enum ActivitiesEnum
+{   RUNNING,
+    WALKING,
+    CYCLING,
+    SWIMMING,
+    BASKETBALL,
+    SOCCER,
+    TENNIS,
+    BADMINTON,
+    DANCING,
+    VOLLEYBALL
     
 }
 //  Running = 10,

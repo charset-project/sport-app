@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using sport_app_backend.Controller;
 using sport_app_backend.Dtos;
 using sport_app_backend.Models;
 
@@ -14,6 +15,13 @@ namespace sport_app_backend.Interface
         public Task<ApiResponse> UpdateWaterInDay(string phoneNumber);
         public Task<ApiResponse> UpdateWeight(string phoneNumber, double weight);
         public Task<ApiResponse> WeightReport(string phoneNumber);
+
+        public Task<ApiResponse> AddActivity(string phoneNumber, AddActivityDto addSportDto);
+        public Task<ApiResponse> DeleteActivity(string phoneNumber,int activityId);
+
+        public Task<ApiResponse> ActivityReport(string phoneNumber);
+
+
         
     }
 }

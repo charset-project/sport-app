@@ -143,11 +143,11 @@ namespace sport_app_backend.Controller
         [Authorize(Roles = "Athlete")]
         public async Task<IActionResult> SearchCoaches([FromBody] string FullName)
         {
-           var resualt = await _context.Users.Where(c => (c.FirstName+" "+c.LastName).Contains(FullName)&& 
-           c.TypeOfUser == TypeOfUser.COACH).ToListAsync();
+            var resualt = await _context.Users.Where(c => (c.FirstName + " " + c.LastName).Contains(FullName) &&
+            c.TypeOfUser == TypeOfUser.COACH).ToListAsync();
             return Ok(new ApiResponse() { Action = true, Message = "Coaches found", Result = resualt.Select(c => c.ToCoachForSearch()).ToList() });
 
-           
+
         }
         [HttpGet("Get-Coaches")]
         [Authorize(Roles = "Athlete")]
@@ -160,16 +160,17 @@ namespace sport_app_backend.Controller
 
         [HttpGet("get_coach_profile/{coachId}")]//need to make it with id
         [Authorize(Roles = "Athlete")]
-        public async Task<IActionResult> GetCoachProfile([FromRoute]int coachId)
+        public async Task<IActionResult> GetCoachProfile([FromRoute] int coachId)
         {
-            var coach = await _context.Coaches.Include(c =>c.Coachplans).FirstOrDefaultAsync(c => c.Id == coachId);
+            var coach = await _context.Coaches.Include(c => c.Coachplans).FirstOrDefaultAsync(c => c.Id == coachId);
             if (coach == null) return BadRequest(new ApiResponse() { Action = false, Message = "Coach not found" });
 
             return Ok(new ApiResponse() { Action = true, Message = "Coach found", Result = coach.ToCoachProfileForAthleteDto() });
         }
         [HttpPut("update_weight")]
         [Authorize(Roles = "Athlete")]
-        public async Task<IActionResult> UpdateWeight(int weight){
+        public async Task<IActionResult> UpdateWeight(int weight)
+        {
             var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
             var result = await _athleteRepository.UpdateWeight(phoneNumber, weight);
@@ -179,7 +180,8 @@ namespace sport_app_backend.Controller
 
         [HttpGet("get_weight_report")]
         [Authorize(Roles = "Athlete")]
-        public async Task<IActionResult> GetWeightReport(){
+        public async Task<IActionResult> GetWeightReport()
+        {
             var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
             if (phoneNumber is null) return BadRequest("PhoneNumber is null");
             var result = await _athleteRepository.WeightReport(phoneNumber);
@@ -187,6 +189,38 @@ namespace sport_app_backend.Controller
             return Ok(result);
         }
 
-    }
 
+        [HttpPost("add_Activity")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> AddActivity([FromBody] AddActivityDto AddActivityDto)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest("PhoneNumber is null");
+            var result = await _athleteRepository.AddActivity(phoneNumber, AddActivityDto);
+            if (!result.Action) return BadRequest(result);
+            return Ok(result);
+        }
+
+        [HttpGet("get_activity_report")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> GetActivityReport()
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest("PhoneNumber is null");
+            var result = await _athleteRepository.ActivityReport(phoneNumber);
+            if (!result.Action) return BadRequest(result);
+            return Ok(result);
+        }
+
+        [HttpDelete("delete_activity")]
+        [Authorize(Roles = "Athlete")]
+        public async Task<IActionResult> DeleteActivity(int activityId)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (phoneNumber is null) return BadRequest("PhoneNumber is null");
+            var result = await _athleteRepository.DeleteActivity(phoneNumber, activityId);
+            if (!result.Action) return BadRequest(result);
+            return Ok(result);
+        }
+    }
 }

@@ -44,6 +44,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<WaterInTake> WaterInTakes { get; set; }
     public DbSet<WaterInDay> WaterInDays { get; set; }
     public DbSet<CoachPlan> CoachesPlan { get; set; }
+    public DbSet<Activitie> Activities { get; set; }
 
 
 

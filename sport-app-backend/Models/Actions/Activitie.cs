@@ -5,16 +5,16 @@ using sport_app_backend.Models.Account;
 
 namespace sport_app_backend.Models.Actions;
 
-public class Sport
+public class Activitie
 {   [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-    public SportEnum sportEnum;
-    public int CaloriesLost { get; set; }
-    public int Duration { get; set; }
+    public ActivitiesEnum ActivityEnum;
+    public double CaloriesLost { get; set; }
+    public double Duration { get; set; }
     public DateTime DateTime{ get; set; }
     public int AthleteId { get; set; }
     public required Athlete Athlete { get; set; }
-    
 
+   
 }
